@@ -1,0 +1,6 @@
+# Libera o site inteiro para o Google e outros buscadores.
+User-agent: *
+Allow: /
+
+# TROQUE pelo endereço real do site (o mesmo do sitemap.xml):
+Sitemap: https://SEU-DOMINIO/sitemap.xml
