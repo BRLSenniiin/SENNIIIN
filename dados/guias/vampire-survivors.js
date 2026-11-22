@@ -26,5 +26,8 @@ JOGOS['vampire-survivors'] = {
   trofeus: [],                   // a lista de troféus; formato nos comentários do guia do Abiotic Factor
   perdiveis: [],
   novidades: [],
+  // Ajustes de abas deste jogo (Vampire Survivors não tem vozes nem armaduras; "Mapas" são Fases; "Equipamentos" são Habilidades):
+  ocultas: ['vozes', 'armaduras'],   // abas que ficam escondidas do menu
+  rotulos: { mapas: { pt: 'Fases', en: 'Stages' }, equipamentos: { pt: 'Habilidades', en: 'Abilities' } },   // troca só o NOME da aba; os dados continuam em mapas: [] e equipamentos: []
   refs: {}
 }
