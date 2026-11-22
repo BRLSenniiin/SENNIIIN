@@ -1,0 +1,76 @@
+SENNIIIN — COMO O SITE ESTÁ ORGANIZADO
+=====================================
+
+O site continua sendo HTML, CSS e JavaScript puros, sem nada para instalar.
+Antes era um arquivo gigante; agora está dividido em arquivos pequenos, cada um com
+um comentário no topo dizendo o que é e quando mexer.
+
+COMO ABRIR E TESTAR
+  Dê dois cliques em index.html (ou gta-vi.html, abiotic-factor.html). Não precisa de servidor.
+  Depois de mudar um arquivo, salve e aperte Ctrl+F5 no navegador para recarregar sem cache.
+
+COMO PUBLICAR (GitHub Pages)
+  Envie a pasta inteira para o repositório, substituindo os arquivos antigos (o index.html antigo
+  é substituído pelo novo). Mantenha as pastas css, js, dados, imagens e modelos como estão.
+
+
+O MAPA: "QUERO MUDAR ISSO" → "ABRA ESTE ARQUIVO"
+------------------------------------------------
+Nome do site, e-mail, carimbo das capas ........ dados/site.js
+Lista de jogos (nome, descrição, dificuldade) .... dados/jogos-lista.js
+Conteúdo de um jogo (troféus, textos, imagens) ... dados/guias/<id>.js
+Novidades do Início ............................. dados/novidades.js
+Dicas (gerais e de cada jogo) .................... dados/dicas.js
+Textos da aba Sobre, FAQ, "recursos" da home ..... dados/sobre.js
+Qualquer frase fixa (botões, títulos, avisos) .... dados/textos.js
+Cores, tamanhos, aparência ....................... css/site.css
+Menu do topo, rodapé, estrutura fixa ............. js/casca.js
+Título e descrição de um jogo no Google .......... <id>.html (na pasta principal)
+Imagens .......................................... pasta imagens/
+
+Arquivos de funcionamento (só mexa se for criar um sistema novo; peça ajuda):
+  js/base.js, js/paginas.js, js/tela-do-jogo.js, js/trofeus.js, js/itens.js,
+  js/trilha-e-detalhes.js, js/secoes-do-jogo.js, js/busca.js, js/eventos.js, js/inicio.js,
+  js/nucleo.js, js/carregar.js (a lista de arquivos; a ORDEM IMPORTA).
+
+
+COLOCAR UM JOGO NOVO (6 passos, todos explicados nos modelos)
+-------------------------------------------------------------
+ 1. Copie modelos/novo-jogo.js para dados/guias/<id>.js e troque ID-DO-JOGO pelo id (ex.: god-of-war).
+ 2. Em dados/jogos-lista.js, copie um bloco de jogo e troque os dados (o id é o mesmo do passo 1).
+ 3. Em js/carregar.js, acrescente 'dados/guias/<id>.js' na lista, depois do último arquivo de dados/guias.
+ 4. Copie modelos/pagina-de-jogo.html para a pasta principal como <id>.html e troque as 3 marcas em maiúsculas.
+ 5. Em sitemap.xml, copie uma linha <url> e troque o final pelo <id>.html.
+ 6. Abra no navegador e confira.
+Testei esta receita: um jogo de teste criado só com esses passos abriu todas as abas sem erro.
+
+
+COISAS BÁSICAS (as explicações estão em comentários nos próprios arquivos)
+--------------------------------------------------------------------------
+Comentário é linha começada por //. Ele não aparece no site: é só nota para você.
+
+ • Textos em dois idiomas: { pt: 'Texto', en: 'Text' }. Mude os dois.
+ • Aspas dentro de texto: escreva \' (barra + aspas simples), senão o código quebra.
+ • Negrito no texto: <strong>assim</strong>. Itálico: <em>assim</em>.
+ • Imagem: coloque o arquivo na pasta imagens/ e escreva img: 'imagens/nome.jpg'.
+ • Vírgula entre os itens de uma lista, e nenhuma depois do último.
+ • Se uma aba sumir ou der erro depois de mexer, desfaça a última mudança: quase sempre
+   é uma vírgula, uma aspas ou uma chave que ficou sem fechar.
+
+
+GOOGLE E ENDEREÇOS
+------------------
+ • Cada jogo tem endereço próprio (gta-vi.html, abiotic-factor.html) com título e descrição próprios.
+ • As abas dentro do jogo ainda usam # (ex.: gta-vi.html#jogo/gta-vi/trofeus). Para o Google elas
+   contam como a página do jogo, não como páginas separadas. É um bom começo; páginas separadas
+   por aba seriam uma mudança maior, para uma próxima etapa.
+ • Em sitemap.xml e robots.txt, troque https://SEU-DOMINIO pelo endereço real do site.
+ • Depois de publicar, cadastre o site no Google Search Console e envie o sitemap.xml.
+
+
+O QUE NÃO MUDAR
+---------------
+ • SITE.storageKey em dados/site.js (apagaria a fila e as dicas salvas dos visitantes).
+ • A ordem dos arquivos em js/carregar.js.
+ • Os "id" das abas (ABAS) e das seções.
+ • O checkbox de troféus é salvo só no navegador de cada visitante (não é compartilhado nem sincroniza).
