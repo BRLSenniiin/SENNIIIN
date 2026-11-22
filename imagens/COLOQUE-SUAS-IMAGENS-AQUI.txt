@@ -1,0 +1,3 @@
+Coloque aqui as imagens do site (capas, prints, retratos).
+Nos arquivos de dados, escreva o caminho assim: img: "imagens/nome-do-arquivo.jpg"
+Dica: use JPG/WEBP leve (até uns 300 KB cada) para o site abrir rápido.
