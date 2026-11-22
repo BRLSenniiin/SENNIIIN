@@ -226,7 +226,7 @@ function jogoConteudo(g, d, sec) {
       ${ds.length ? `${jNota(jt('dicas_intro'))}<div class="jv-lista jv-nov-lista">${ds.map((x, k) => jCardDica(x, k)).join('')}</div>` : jVazio()}`
   }
   if (sec === 'mapas') {
-    return `<div class="sec-head"><div class="jv-cab"><span class="jv-ico" aria-hidden="true">${icoSec('mapas')}</span><div><p class="kicker">${jt('s').mapas}</p><h2 class="h2">${jt('s').mapas}</h2></div></div></div>
+    return `<div class="sec-head"><div class="jv-cab"><span class="jv-ico" aria-hidden="true">${icoSec('mapas')}</span><div><p class="kicker">${jRot('mapas')}</p><h2 class="h2">${jRot('mapas')}</h2></div></div></div>
       ${d.mapas.length ? `<div class="jv-lista">${d.mapas.map(m => `<a class="jv-card" href="${esc(m.href)}" style="text-decoration:none;color:inherit"><h3>${esc(L(m.t))}</h3><p>${esc(L(m.d || ''))}</p></a>`).join('')}</div>` : jVazio()}`
   }
   if (sec === 'jogabilidade') {
