@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  SITEMAP: lista de endereços do site para o Google.
+  TROQUE "https://SEU-DOMINIO" pelo endereço real do site (ex.: https://diariodeplatina.com.br) em TODAS as linhas.
+  Ao publicar um jogo novo, copie um bloco <url> e troque o final do endereço pelo <id>.html do jogo.
+  Depois de publicar, envie este arquivo no Google Search Console (menu Sitemaps).
+-->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://SEU-DOMINIO/</loc></url>
+  <url><loc>https://SEU-DOMINIO/abiotic-factor.html</loc></url>
+  <url><loc>https://SEU-DOMINIO/gta-vi.html</loc></url>
+  <url><loc>https://SEU-DOMINIO/vampire-survivors.html</loc></url>
+</urlset>
