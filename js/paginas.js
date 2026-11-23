@@ -14,7 +14,7 @@ function cardGuia(g, i) {
   const stats = [
     [`${g.dif}/10`, tx('c_dif')],
     [`${g.horasMin}–${g.horasMax}h`, tx('c_tempo')],
-    [g.playthroughs, tx('c_jog')],
+    [L(g.playthroughs), tx('c_jog')],
     [g.perdiveis, tx('c_perd')]
   ].map(([v, l]) => `<div><b>${v}</b><span>${l}</span></div>`).join('')
   return `

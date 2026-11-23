@@ -266,7 +266,7 @@ function jogoConteudo(g, d, sec) {
     <div class="jv-num">
       <div><div class="meter" data-t="${tier(g.dif)}" role="img" aria-label="${esc(tx('c_aria_dif', g.dif))}">${medidor}</div><b>${g.dif}/10</b><span>${jt('dif')}</span></div>
       <div><b>${g.horasMin}–${g.horasMax}h</b><span>${jt('tempo')}</span></div>
-      <div><b>${g.playthroughs}</b><span>${jt('jog')}</span></div>
+      <div><b>${L(g.playthroughs)}</b><span>${jt('jog')}</span></div>
       <div class="rose"><b>${g.perdiveis}</b><span>${jt('perd')}</span></div>
     </div>
     <div class="jv-intro">${(d.abertura || []).map(p => `<p>${L(p)}</p>`).join('')}</div>
