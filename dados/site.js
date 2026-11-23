@@ -35,8 +35,10 @@ const ABAS = [
 // Limites de exibição na aba Guias: quantos entram na faixa "Últimos guias" e quantos aparecem
 // por vez na lista (o botão "Mostrar mais" libera o próximo lote).
 // linhasMin = linhas mínimas do tabuleiro em "Todos os guias" (as casas que sobram aparecem vazias).
-const LIMITES = { ultimos: 8, grade: 10, linhasMin: 2, homeJogos: 5, blocos: 4, rapidas: 6, rapidasSeg: 7, dicas: 7, novidades: 20 }
+const LIMITES = { ultimos: 8, grade: 10, linhasMin: 2, homeJogos: 5, blocos: 4, rapidas: 6, rapidasSeg: 7, dicas: 7, novidades: 20, novidadesTudo: 4, buscaUltimos: 5 }
 // dicas = quantas dicas (as mais recentes) aparecem na faixa "Dicas de caçador" quando não há busca nem categoria escolhida.
 // rapidas = máximo de dicas rápidas no topo da aba Dicas; rapidasSeg = segundos que cada uma fica na tela antes de passar sozinha.
-// novidades = quantas novidades (as mais recentes) a faixa "Novidades" do topo do Início mostra.
+// novidades = quantas novidades (as mais recentes) a faixa "Novidades" do topo do Início mostra nos filtros Guias, Dicas e Site.
+// novidadesTudo = quantas aparecem no filtro "Tudo" (só as mais recentes, para a faixa não ficar enorme).
+// buscaUltimos = quantos guias o painel de busca flutuante lista antes de você digitar ("Últimos guias"); ao digitar, a busca olha todos os guias.
 // homeJogos = quantos jogos aparecem na seção "jogo a jogo" do Início (os últimos atualizados, pela data de JOGOS[id].atualizado); blocos = máximo de blocos por jogo (o guia + as dicas mais recentes dele).

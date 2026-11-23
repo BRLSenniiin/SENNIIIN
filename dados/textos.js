@@ -67,7 +67,7 @@ const TXT = {
     s_k: 'sobre', s_h: 'Quem faz e por quê', s_contatos: 'contatos e apoio', s_faq: 'Perguntas rápidas', s_breve: 'em breve',
     foot_r: 'HTML puro · sem cadastro · sem anúncios',
     bu_fab: 'Buscar jogo', bu_ph: 'Digite o nome do jogo', bu_aria: 'Buscar jogo no site', bu_fechar: 'Fechar busca',
-    bu_todos: n => `Todos os guias (${n})`, bu_res: n => n === 1 ? '1 resultado' : `${n} resultados`,
+    bu_todos: n => `Últimos guias (${n})`, bu_res: n => n === 1 ? '1 resultado' : `${n} resultados`,
     bu_nada: 'Nenhum jogo encontrado.', bu_nada2: 'Tente outro nome, uma tag ou parte do título.',
     bu_dica: 'Enter abre · Esc fecha · ↑ ↓ navegam'
   },
@@ -127,7 +127,7 @@ const TXT = {
     s_k: 'about', s_h: 'Who makes this and why', s_contatos: 'contacts & support', s_faq: 'Quick questions', s_breve: 'soon',
     foot_r: 'Plain HTML · no sign-up · no ads',
     bu_fab: 'Search a game', bu_ph: 'Type the game name', bu_aria: 'Search a game on the site', bu_fechar: 'Close search',
-    bu_todos: n => `All guides (${n})`, bu_res: n => n === 1 ? '1 result' : `${n} results`,
+    bu_todos: n => `Latest guides (${n})`, bu_res: n => n === 1 ? '1 result' : `${n} results`,
     bu_nada: 'No games found.', bu_nada2: 'Try another name, a tag or part of the title.',
     bu_dica: 'Enter opens · Esc closes · ↑ ↓ to move'
   }

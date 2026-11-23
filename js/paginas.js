@@ -234,7 +234,7 @@ function renderNovidades() {
   $('nv-filtros').innerHTML = FILTROS_NV.map(f =>
     `<button class="chip ${UI.nv === f.id ? 'on' : ''}" data-action="nv" data-v="${f.id}">${esc(L(f.rot))}</button>`).join('')
   const ordem = NOVIDADES.slice().sort((a, b) => (b.data || '') > (a.data || '') ? 1 : (b.data || '') < (a.data || '') ? -1 : 0)
-  const lista = ordem.filter(n => UI.nv === 'todas' || n.tipo === UI.nv).slice(0, LIMITES.novidades)
+  const lista = ordem.filter(n => UI.nv === 'todas' || n.tipo === UI.nv).slice(0, UI.nv === 'todas' ? LIMITES.novidadesTudo : LIMITES.novidades)
   $('nv-lista').innerHTML = lista.length
     ? lista.map(cardNovidade).join('')
     : `<p class="vazio" style="flex:1 0 100%">${tx('nv_vazio')}</p>`

@@ -17,7 +17,7 @@ function buscaItem(g, i) {
 }
 
 function renderBusca() {
-  BUSCA.lista = buscaFiltrar(BUSCA.q)
+  BUSCA.lista = BUSCA.q.trim() ? buscaFiltrar(BUSCA.q) : GUIAS.slice(0, LIMITES.buscaUltimos)   // sem digitar: só os últimos guias; digitando: busca em todos
   const n = BUSCA.lista.length
   BUSCA.i = Math.min(BUSCA.i, Math.max(0, n - 1))
   $('bu-cont').textContent = BUSCA.q.trim() ? tx('bu_res', n) : tx('bu_todos', n)
