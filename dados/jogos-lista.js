@@ -69,7 +69,7 @@ const GUIAS = [
     tags: { pt: ['Mundo aberto', 'Todos offline', 'Platina longa', '1 perdível'], en: ['Open world', 'All offline', 'Long platinum', '1 missable'] },
     resumo: { pt: 'Platina de dificuldade baixa e muito tempo: 55 troféus, todos offline, em uma única jogatina, com cerca de 200 horas até o 100% e um troféu possivelmente perdível, a meditação do Capítulo 1.', en: 'A low-difficulty platinum that takes a lot of time: 55 trophies, all offline, in a single playthrough, with about 200 hours to 100% and one possibly missable trophy, the Chapter 1 meditation.' }
   },
-  // Vampire Survivors: 221 troféus (com platina) no PS5/PS4, 41 na lista base (Push Square, ago/2024).
+  // Vampire Survivors: 284 troféus (com platina) no PS5, 41 na lista base (Exophase, nov/2026).
   // PROVISÓRIO (conferir quando chegarem as páginas): dif, horasMin/horasMax, playthroughs, perdiveis e raridade ainda não têm fonte confirmada.
   {
     id: 'vampire-survivors',
@@ -79,17 +79,17 @@ const GUIAS = [
     href: '#jogo/vampire-survivors',
     hue: 280,
     platina: true,
-    trofeus: 221,
-    dif: 4,
+    trofeus: 284,
+    dif: 6,
     horasMin: 80,
     horasMax: 200,
-    playthroughs: 1,
+    playthroughs: { pt: 'Fases repetitivas', en: 'Repetitive stages' },   // texto no lugar do número de jogatinas
     perdiveis: 0,
     colecionaveis: null,
     raridade: null,
     progresso: 5,
     tags: { pt: ['Roguelite', 'Lista enorme', 'Em preparo'], en: ['Roguelite', 'Huge list', 'In progress'] },
-    resumo: { pt: 'Platina de lista enorme: 221 troféus no PS5/PS4, 41 deles na lista base. Guia em preparo, com troféus e roteiro a caminho.', en: 'A platinum with a huge list: 221 trophies on PS5/PS4, 41 of them in the base list. Guide in progress, with trophies and roadmap on the way.' }
+    resumo: { pt: 'Platina de lista enorme: 284 troféus no PS5/PS4, 41 deles na lista base. Guia em preparo, com troféus e roteiro a caminho.', en: 'A platinum with a huge list: 284 trophies on PS5/PS4, 41 of them in the base list. Guide in progress, with trophies and roadmap on the way.' }
   }
   // TODO: adicionar novos guias aqui conforme forem concluídos (sempre com pt e en)
 ]
