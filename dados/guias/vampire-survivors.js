@@ -91,13 +91,44 @@ JOGOS['vampire-survivors'] = {
     { p: { pt: 'O menu à esquerda separa o guia por função. <strong>Jogabilidade</strong> explica as regras; <strong>Fases</strong>, <strong>Bestiário</strong>, <strong>Personagens</strong>, <strong>Armas</strong> e <strong>Passivas</strong> servem de consulta rápida; <strong>Sistemas</strong> reúne a evolução das armas, as recompensas e as arcanas; <strong>Troféus</strong> e <strong>Dicas</strong> valem a leitura antes de começar a platina.',
            en: 'The menu on the left splits the guide by function. <strong>Gameplay</strong> explains the rules; <strong>Stages</strong>, <strong>Bestiary</strong>, <strong>Characters</strong>, <strong>Weapons</strong> and <strong>Passives</strong> are for quick lookups; <strong>Systems</strong> gathers weapon evolution, rewards and arcanas; <strong>Trophies</strong> and <strong>Tips</strong> are worth reading before you start the platinum.' } }
   ],                // aba Visão geral (texto corrido com imagens)
-  jogabilidade: [],
-  roteiro: [],                   // aba "Guia" (passo a passo)
-  mapas: [],
-  bestiario: [],
-  personagens: [],
-  equipamentos: [],
-  armaduras: [],
+  jogabilidade: [                // EXEMPLO (formato do GTA VI): troque pelos textos reais e acrescente mais blocos { h } { p } { ul }
+    { h: { pt: 'Exemplo: como funciona uma partida', en: 'Example: how a run works' } },
+    { p: { pt: 'Escreva aqui um parágrafo sobre a jogabilidade. Use <strong>negrito</strong> para destacar o que importa.', en: 'Write a paragraph about the gameplay here. Use <strong>bold</strong> to highlight what matters.' } },
+    { ul: [ { pt: 'Item de lista de exemplo.', en: 'Example list item.' } ] }
+  ],
+  roteiro: [                     // aba "Guia" (passo a passo). EXEMPLO (formato do GTA VI): status 'base' = rascunho
+    { id: 'roteiro-exemplo', setor: 'Exemplo', status: 'base', img: '',
+      t: { pt: 'Exemplo: primeira parte do roteiro', en: 'Example: first part of the walkthrough' },
+      d: { pt: 'Resumo curto desta parte, que aparece no card.', en: 'Short summary of this part, shown on the card.' },
+      legCapa: { pt: 'Legenda da imagem de capa.', en: 'Cover image caption.' },
+      corpo: [
+        { h: { pt: 'Título do passo', en: 'Step title' } },
+        { p: { pt: 'Descreva o passo aqui.', en: 'Describe the step here.' } },
+        { ul: [ { pt: 'Ponto a lembrar.', en: 'Point to remember.' } ] }
+      ] }
+  ],
+  mapas: [                       // "Fases". EXEMPLO (formato do GTA VI / Abiotic): t = nome, d = descrição, href = link da fase
+    { t: { pt: 'Exemplo: nome da fase', en: 'Example: stage name' }, d: { pt: 'Descrição curta da fase.', en: 'Short stage description.' }, href: '#jogo/vampire-survivors/mapas' }
+  ],
+  bestiario: [                   // EXEMPLO (formato do Abiotic Factor): tipo = criatura | humano | robo
+    { id: 'inimigo-exemplo', tipo: 'criatura', nome: 'Exemplo: inimigo', img: '',
+      resumo: { pt: 'Resumo do inimigo: onde aparece e o que faz.', en: 'Enemy summary: where it appears and what it does.' },
+      locais: ['Exemplo: fase'],
+      stats: [ { rot: { pt: 'Vida', en: 'Health' }, v: { pt: 'a preencher', en: 'to fill in' } } ] }
+  ],
+  personagens: [                 // EXEMPLO (formato do GTA VI)
+    { id: 'personagem-exemplo', nome: 'Exemplo: personagem', funcao: { pt: 'Personagem jogável', en: 'Playable character' }, img: '',
+      resumo: { pt: 'Resumo curto do personagem.', en: 'Short character summary.' },
+      tags: [ { pt: 'Exemplo', en: 'Example' } ],
+      descricao: { pt: 'Descrição do personagem.', en: 'Character description.' },
+      jogo: [ { rot: { pt: 'Arma inicial', en: 'Starting weapon' }, v: { pt: 'a preencher', en: 'to fill in' } } ] }
+  ],
+  equipamentos: [                // "Armas". EXEMPLO (formato do GTA VI): cat = categoria (o texto vira o título do grupo)
+    { cat: 'Armas', nome: 'Exemplo: arma' }
+  ],
+  armaduras: [                   // "Passivas". EXEMPLO (formato do Abiotic Factor): slot = categoria (o texto vira o título do grupo)
+    { slot: 'Passivas', nome: 'Exemplo: passiva' }
+  ],
   trofeus: [                     // a lista de troféus; formato nos comentários do guia do Abiotic Factor
       // ── Lista base (41) ──
       { ex: '774086-cosmic-delight', tipo: 'platina', nome: { pt: 'Deleite Cósmico', en: 'Cosmic Delight' }, desc: { pt: 'Onde é que estava o vampiro mesmo?' }, pct: 40.15, exp: 21, rar: 'incomum', img: '5573ed67' },
@@ -415,10 +446,36 @@ JOGOS['vampire-survivors'] = {
       { ex: '1130897-red-moon-manor-map', tipo: 'bronze', nome: { pt: 'Mapa da Mansão Lua Vermelha', en: 'Red Moon Manor Map' }, desc: { pt: 'Encontre o mapa da Mansão Lua Vermelha.' }, pct: 8.18, exp: 101, rar: 'muito-raro', img: 'gj84d7j6' }
   ],
   perdiveis: [],
-  novidades: [],
+  novidades: [                   // EXEMPLO real no formato do GTA VI
+    { id: 'guia-criado', badge: 'novo', data: '2026-11-23', img: '',
+      t: { pt: 'Guia do Vampire Survivors criado', en: 'Vampire Survivors guide created' },
+      d: { pt: 'A base do guia está no ar: visão geral e a lista completa de 284 troféus. As demais abas serão preenchidas aos poucos.', en: 'The base of the guide is up: overview and the full list of 284 trophies. The other tabs will be filled in over time.' },
+      legCapa: { pt: '', en: '' },
+      corpo: [
+        { h: { pt: 'O que já existe', en: 'What already exists' } },
+        { ul: [ { pt: 'Visão geral do jogo.', en: 'Game overview.' }, { pt: 'Lista com os 284 troféus, na ordem do Exophase.', en: 'The 284-trophy list, in Exophase order.' } ] },
+        { h: { pt: 'O que vem a seguir', en: 'What comes next' } },
+        { p: { pt: 'As abas de jogabilidade, fases, armas e sistemas.', en: 'The gameplay, stages, weapons and systems tabs.' } }
+      ] }
+  ],
+  trilha: [                      // EXEMPLO (formato do GTA VI): youtube = código do vídeo
+    { por: 'Exemplo: artista', t: 'Exemplo: nome da faixa', youtube: '', onde: { pt: 'Exemplo: fase ou menu', en: 'Example: stage or menu' }, d: { pt: 'Descrição curta da faixa.', en: 'Short track description.' } }
+  ],
+  detalhes: [                    // EXEMPLO (formato do GTA VI): mural de imagens. Coloque o arquivo em imagens/ e escreva img: 'imagens/arquivo.jpg'
+    { t: { pt: 'Exemplo: imagem do mural', en: 'Example: mural image' }, larg: 2, prop: '2 / 1', img: '', alt: { pt: 'Descrição da imagem', en: 'Image description' } }
+  ],
+  curiosidades: [                // EXEMPLO (formato do GTA VI)
+    { t: { pt: 'Exemplo: título da curiosidade', en: 'Example: curiosity title' }, d: { pt: 'Texto curto da curiosidade.', en: 'Short curiosity text.' } }
+  ],
+  desenvolvedores: [             // EXEMPLO (formato do GTA VI)
+    { nome: 'Exemplo: nome do estúdio ou pessoa', cargo: { pt: 'Função no jogo', en: 'Role in the game' }, neste: { pt: 'O que fez neste jogo.', en: 'What they did on this game.' } }
+  ],
   // Ajustes de abas deste jogo (Vampire Survivors não tem vozes nem perdíveis; "Mapas" são Fases; "Equipamentos" são Armas e "Armaduras" são Passivas):
   ocultas: ['vozes', 'perdiveis'],   // abas que ficam escondidas do menu
   rotulos: { mapas: { pt: 'Fases', en: 'Stages' }, equipamentos: { pt: 'Armas', en: 'Weapons' }, armaduras: { pt: 'Passivas', en: 'Passives' } },   // troca só o NOME da aba; os dados continuam em mapas: [], equipamentos: [] e armaduras: []
+  evolucoes: [ { h: { pt: 'Exemplo: como uma arma evolui', en: 'Example: how a weapon evolves' } }, { p: { pt: 'Escreva aqui a regra de evolução e liste as combinações com { ul }.', en: 'Write the evolution rule here and list the combinations with { ul }.' } } ],   // EXEMPLO
+  recompensas: [ { h: { pt: 'Exemplo: tipos de recompensa', en: 'Example: reward types' } }, { p: { pt: 'Escreva aqui o que cada recompensa dá e onde conseguir.', en: 'Write here what each reward gives and where to get it.' } } ],   // EXEMPLO
+  arcanas: [ { h: { pt: 'Exemplo: o que são as Arcanas', en: 'Example: what Arcanas are' } }, { p: { pt: 'Escreva aqui como funcionam as Arcanas.', en: 'Write here how Arcanas work.' } } ],   // EXEMPLO
   secoesExtra: ['evolucoes', 'recompensas', 'arcanas'],   // abas opcionais do bloco "Sistemas" ligadas neste jogo (cada uma vira uma lista de blocos: evolucoes: [], recompensas: [], arcanas: [])
   // Imagens das palavras-chave do texto ([[id|palavra]]). Troque img: '' por img: 'imagens/arquivo.jpg'.
   refs: {

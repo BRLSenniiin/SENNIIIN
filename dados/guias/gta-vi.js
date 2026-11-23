@@ -571,7 +571,9 @@ JOGOS['gta-vi'] = {
         ]
       }
     ],
-    mapas: [],
+    mapas: [   // EXEMPLO (formato { t, d, href }): troque pelo mapa real
+      { t: { pt: 'Exemplo: nome do mapa', en: 'Example: map name' }, d: { pt: 'Descrição curta do mapa.', en: 'Short map description.' }, href: '#jogo/gta-vi/mapas' }
+    ],
     bestiario: [],
     equipamentos: [
       { cat: 'melee', nome: 'Baseball Bat' },

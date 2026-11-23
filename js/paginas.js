@@ -182,7 +182,7 @@ function renderHub() {
       </div>
       ${GUIAS.map((g, i) => ({ g, i, d: ((JOGOS[g.id] || {}).atualizado || '') })).sort((a, b) => (b.d > a.d ? 1 : b.d < a.d ? -1 : a.i - b.i)).slice(0, LIMITES.homeJogos).map(x => linhaJogo(x.g)).join('')}
       <aside class="hj-aviso" aria-label="${esc(tx('hj_av_t'))}"><span class="hj-aviso-i" aria-hidden="true">i</span><div><b>${tx('hj_av_t')}</b><p>${tx('hj_av_d', LIMITES.homeJogos)}</p></div><button class="link" type="button" data-action="tab" data-tab="guias">${tx('hj_av_b')}</button></aside>
-      <button class="hj-slot" type="button" data-action="tab" data-tab="sobre"><b aria-hidden="true">+</b> ${tx('slot_h')}</button>
+      <div class="hj-slot"><b aria-hidden="true">···</b> ${tx('slot_h')}</div>
     </div>`
 }
 
@@ -332,10 +332,10 @@ function cardTile(g, i) {
     </a>`
 }
 const tileSlot = () => `
-    <button class="tile tile-slot" type="button" data-action="tab" data-tab="sobre">
-      <span class="tile-plus" aria-hidden="true">+</span>
+    <div class="tile tile-slot">
+      <span class="tile-plus" aria-hidden="true">···</span>
       <span class="tile-nome">${tx('slot_h')}</span>
-    </button>`
+    </div>`
 const tileVazio = () => '<span class="tile tile-vazio" aria-hidden="true"></span>'
 
 function iniciarGrade() {
@@ -370,10 +370,10 @@ function atualizarRail() {
 
 function renderUltimos() {
   $('g-ultimos').innerHTML = GUIAS.slice(0, LIMITES.ultimos).map(cardPoster).join('') + `
-    <button class="poster poster-slot" type="button" data-action="tab" data-tab="sobre">
-      <span class="poster-img" aria-hidden="true">+</span>
+    <div class="poster poster-slot">
+      <span class="poster-img" aria-hidden="true">···</span>
       <span class="poster-info"><b class="poster-nome">${tx('slot_h')}</b></span>
-    </button>`
+    </div>`
   atualizarRail()
 }
 

@@ -214,7 +214,9 @@ JOGOS['abiotic-factor'] = {
         ] }
     ],
     // Mapas: { t: { pt, en }, d: { pt, en }, href: '...' }
-    mapas: [],
+    mapas: [   // EXEMPLO (formato { t, d, href }): troque pelo mapa real
+      { t: { pt: 'Exemplo: nome do mapa', en: 'Example: map name' }, d: { pt: 'Descrição curta do mapa.', en: 'Short map description.' }, href: '#jogo/abiotic-factor/mapas' }
+    ],
     // Jogabilidade (texto corrido, mesmos tipos de bloco da Visão geral): h, p, ul, destaque, ir, img + dest: { tag, t, d } (cartão curto e esticado dentro do texto)
     jogabilidade: [
       { img: '', razao: '21 / 9', alt: { pt: 'Vida dentro do complexo', en: 'Life inside the facility' },

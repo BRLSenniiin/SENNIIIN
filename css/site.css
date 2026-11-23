@@ -172,6 +172,7 @@
   }
   .chip:hover { color: var(--text); border-color: var(--mute); }
   .chip.on { background: var(--ember); border-color: var(--ember); color: #fbeff0; }
+  #nv-filtros .chip { min-width: 4.8rem; text-align: center; }   /* Tudo / Guias / Dicas / Site com a mesma largura */
 
   /* ── BAND ── */
   .band { display: grid; grid-template-columns: repeat(4, 1fr); margin-top: clamp(32px, 6vw, 64px); border-block: 1px solid var(--line); }
@@ -542,7 +543,7 @@
   .hj-aviso b { display: block; font: 700 .92rem/1.2 var(--f-display); }
   .hj-aviso p { margin: .25rem 0 0; color: var(--dim); font-size: .82rem; line-height: 1.45; }
   @media (max-width: 640px) { .hj-aviso { flex-wrap: wrap; } .hj-aviso > div { flex-basis: calc(100% - 40px); } }
-  @media (hover: hover) { .hj-slot:hover { border-color: var(--ember); color: var(--text); } }
+  /* (sem efeito de hover: o aviso é só informativo, não um botão) */
 
   @media (max-width: 640px) {
     .hj-jogo { grid-template-columns: minmax(0, 1fr); }
@@ -645,7 +646,6 @@
   .poster-meta { font: 500 .66rem/1.3 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--mute); }
   @media (hover: hover) {
     .poster:hover .poster-img { border-color: hsl(var(--h, 20) 80% 60%); box-shadow: 0 8px 24px -8px hsl(var(--h, 20) 80% 50% / .45); }
-    .poster-slot:hover .poster-img { border-color: var(--ember); }
   }
   .poster-slot .poster-img {
     display: grid; place-items: center; border-style: dashed; border-color: var(--line2); background: transparent;
@@ -706,7 +706,7 @@
   .tile-slot::after, .tile-vazio::after, .tile-vazio::before { display: none; }
   .tile-plus { font: 300 2.6rem/1 var(--f-display); color: var(--ember); }
   .tile-slot .tile-nome { font-size: .9rem; color: var(--dim); }
-  @media (hover: hover) { .tile-slot:hover .tile-plus { transform: scale(1.15); } }
+
   .tile-plus { transition: transform .2s; }
 
   /* aviso de contexto no topo da aba Dicas */

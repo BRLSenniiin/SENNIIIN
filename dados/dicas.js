@@ -143,7 +143,10 @@ const DICAS = [
     ],
     titulo: { pt: 'Medite com a Lucia no Capítulo 1', en: 'Meditate with Lucia in Chapter 1' },
     texto: { pt: 'Uma meditação opcional do Capítulo 1 conta para o troféu Positive Mental Attitude e não aparece como ponto comum.', en: 'An optional Chapter 1 meditation counts toward the Positive Mental Attitude trophy and does not show up as a regular spot.' }
-  }
+  },
+  { id: 'd16', cat: 'Troféus', jogo: 'Vampire Survivors', img: '',
+    titulo: { pt: 'Comece pela lista base', en: 'Start with the base list' },
+    texto:  { pt: 'A lista tem 284 troféus, mas só 41 são do jogo base. Os outros vêm das 29 seções de DLC e atualizações.', en: 'The list has 284 trophies, but only 41 are from the base game. The other ones come from 29 DLC and update sections.' } }
 ]
 
 // Dicas rápidas (stories no topo da aba Dicas). Um objeto por dica, as mais novas primeiro.
