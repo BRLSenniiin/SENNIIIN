@@ -88,8 +88,8 @@ JOGOS['vampire-survivors'] = {
     { ir: 'trofeus', t: { pt: 'Ver todos os troféus →', en: 'See all the trophies →' } },
 
     { h: { pt: 'Como usar este guia', en: 'How to use this guide' } },
-    { p: { pt: 'O menu à esquerda separa o guia por função. <strong>Jogabilidade</strong> explica as regras; <strong>Fases</strong>, <strong>Bestiário</strong>, <strong>Personagens</strong> e <strong>Habilidades</strong> servem de consulta rápida; <strong>Troféus</strong> e <strong>Dicas</strong> valem a leitura antes de começar a platina.',
-           en: 'The menu on the left splits the guide by function. <strong>Gameplay</strong> explains the rules; <strong>Stages</strong>, <strong>Bestiary</strong>, <strong>Characters</strong> and <strong>Abilities</strong> are for quick lookups; <strong>Trophies</strong> and <strong>Tips</strong> are worth reading before you start the platinum.' } }
+    { p: { pt: 'O menu à esquerda separa o guia por função. <strong>Jogabilidade</strong> explica as regras; <strong>Fases</strong>, <strong>Bestiário</strong>, <strong>Personagens</strong>, <strong>Armas</strong> e <strong>Passivas</strong> servem de consulta rápida; <strong>Sistemas</strong> reúne a evolução das armas, as recompensas e as arcanas; <strong>Troféus</strong> e <strong>Dicas</strong> valem a leitura antes de começar a platina.',
+           en: 'The menu on the left splits the guide by function. <strong>Gameplay</strong> explains the rules; <strong>Stages</strong>, <strong>Bestiary</strong>, <strong>Characters</strong>, <strong>Weapons</strong> and <strong>Passives</strong> are for quick lookups; <strong>Systems</strong> gathers weapon evolution, rewards and arcanas; <strong>Trophies</strong> and <strong>Tips</strong> are worth reading before you start the platinum.' } }
   ],                // aba Visão geral (texto corrido com imagens)
   jogabilidade: [],
   roteiro: [],                   // aba "Guia" (passo a passo)
@@ -416,9 +416,10 @@ JOGOS['vampire-survivors'] = {
   ],
   perdiveis: [],
   novidades: [],
-  // Ajustes de abas deste jogo (Vampire Survivors não tem vozes, armaduras nem perdíveis; "Mapas" são Fases; "Equipamentos" são Habilidades):
-  ocultas: ['vozes', 'armaduras', 'perdiveis'],   // abas que ficam escondidas do menu
-  rotulos: { mapas: { pt: 'Fases', en: 'Stages' }, equipamentos: { pt: 'Habilidades', en: 'Abilities' } },   // troca só o NOME da aba; os dados continuam em mapas: [] e equipamentos: []
+  // Ajustes de abas deste jogo (Vampire Survivors não tem vozes nem perdíveis; "Mapas" são Fases; "Equipamentos" são Armas e "Armaduras" são Passivas):
+  ocultas: ['vozes', 'perdiveis'],   // abas que ficam escondidas do menu
+  rotulos: { mapas: { pt: 'Fases', en: 'Stages' }, equipamentos: { pt: 'Armas', en: 'Weapons' }, armaduras: { pt: 'Passivas', en: 'Passives' } },   // troca só o NOME da aba; os dados continuam em mapas: [], equipamentos: [] e armaduras: []
+  secoesExtra: ['evolucoes', 'recompensas', 'arcanas'],   // abas opcionais do bloco "Sistemas" ligadas neste jogo (cada uma vira uma lista de blocos: evolucoes: [], recompensas: [], arcanas: [])
   // Imagens das palavras-chave do texto ([[id|palavra]]). Troque img: '' por img: 'imagens/arquivo.jpg'.
   refs: {
     evolucao: { img: '', razao: '16 / 9', alt: { pt: 'Uma arma evoluída', en: 'An evolved weapon' },

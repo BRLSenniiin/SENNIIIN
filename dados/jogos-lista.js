@@ -35,7 +35,7 @@
 const GUIAS = [
   {
     id: 'abiotic-factor', jogo: 'Abiotic Factor', subtitulo: 'Survival crafting · Gate Cascade',
-    plataformas: ['PS5'], href: '#jogo/abiotic-factor', hue: 150,
+    plataformas: ['PS5', 'Xbox Series X|S', 'PC'], href: '#jogo/abiotic-factor', hue: 150,
     platina: true, trofeus: 54, dif: 5, horasMin: 60, horasMax: 100, playthroughs: 1,
     perdiveis: 7, colecionaveis: null, raridade: 7.44,
     progresso: 15,   // % do guia, escrito à mão. SÓ vale para jogo sem o bloco 'descoberto' (em JOGOS); com ele, a porcentagem é a média das abas. Abaixo de 100 mostra "Em progresso"; apague a linha (ou use 100) quando o guia estiver completo.
@@ -54,7 +54,7 @@ const GUIAS = [
     id: 'gta-vi',
     jogo: 'Grand Theft Auto VI',
     subtitulo: { pt: 'Mundo aberto · Leonida', en: 'Open world · Leonida' },
-    plataformas: ['PS5'],
+    plataformas: ['PS5', 'Xbox Series X|S'],
     href: '#jogo/gta-vi',
     hue: 330,
     platina: true,
@@ -75,7 +75,7 @@ const GUIAS = [
     id: 'vampire-survivors',
     jogo: 'Vampire Survivors',
     subtitulo: { pt: 'Roguelite · Sobrevivência', en: 'Roguelite · Survival' },
-    plataformas: ['PS5'],
+    plataformas: ['PS5', 'Xbox Series X|S', 'Switch', 'PC', 'Android', 'iOS', 'Meta Quest'],
     href: '#jogo/vampire-survivors',
     hue: 280,
     platina: true,

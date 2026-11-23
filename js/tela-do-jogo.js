@@ -4,10 +4,10 @@ const jt = (k, ...a) => { const v = JT[LANG][k] !== undefined ? JT[LANG][k] : JT
 // Blocos do menu lateral da tela do jogo, agrupados por função. A ordem aqui é a ordem no menu.
 const JGRUPOS = [
   { id: 'comeco', secs: ['visao', 'novidades', 'dicas', 'trilha', 'detalhes', 'curiosidades', 'vozes', 'desenvolvedores'] },
-  { id: 'jogo',   secs: ['jogabilidade', 'roteiro', 'mapas', 'bestiario', 'personagens'] },
+  { id: 'jogo',   secs: ['jogabilidade', 'modos', 'roteiro', 'mapas', 'bestiario', 'personagens'] },
   { id: 'equip',  secs: ['equipamentos', 'armaduras'] },
   { id: 'mundo',  secs: ['atividades', 'colecionaveis', 'segredos', 'missoes', 'organizacoes', 'servicos', 'animais'], extra: true },
-  { id: 'sist',   secs: ['objetos', 'veiculos', 'profissoes', 'tracos', 'habilidades', 'gatepal', 'policia', 'negocios', 'personalizacao', 'propriedades', 'relacionamento', 'atributos'], extra: true },
+  { id: 'sist',   secs: ['evolucoes', 'recompensas', 'arcanas', 'objetos', 'veiculos', 'profissoes', 'tracos', 'habilidades', 'gatepal', 'policia', 'negocios', 'personalizacao', 'propriedades', 'relacionamento', 'atributos'], extra: true },
   { id: 'lore',   secs: ['lore', 'compendio', 'hologramas', 'emails', 'registro', 'anteversos'], extra: true },
   { id: 'estr',   secs: ['gate101', 'metajogo', 'bugs'], extra: true },
   { id: 'trof',   secs: ['trofeus', 'perdiveis'] }
@@ -21,7 +21,7 @@ const jRot = sec => { const o = ((JOGOS[JOGO_UI.id] || {}).rotulos || {})[sec]; 
 /* % descoberto de cada aba do jogo (número pequeno no menu do guia). Só as abas do jogo: Visão geral, Novidades e Dicas não têm.
    Quem manda é o JOGOS[id].descoberto, valor de 0 a 100 que você escreve à mão conforme vai preenchendo a aba.
    Aba sem número ali usa o automático: 0% se estiver vazia, 5% se já tiver conteúdo. Jogo sem 'descoberto' não mostra nada. */
-const JPCT_FORA = ['visao', 'novidades', 'dicas']
+const JPCT_FORA = ['visao', 'novidades', 'dicas', 'modos']
 function jPct(id, sec) {
   const d = JOGOS[id] || {}
   if (!d.descoberto || JPCT_FORA.includes(sec)) return null
@@ -91,6 +91,10 @@ const ICONES_SEC = {
   dicas: '<path d="M208,104a79.86,79.86,0,0,1-30.59,62.92A24.29,24.29,0,0,0,168,186v6a8,8,0,0,1-8,8H96a8,8,0,0,1-8-8v-6a24.11,24.11,0,0,0-9.3-19A79.87,79.87,0,0,1,48,104.45C47.76,61.09,82.72,25,126.07,24A80,80,0,0,1,208,104Z" opacity="0.2"/><path d="M176,232a8,8,0,0,1-8,8H88a8,8,0,0,1,0-16h80A8,8,0,0,1,176,232Zm40-128a87.55,87.55,0,0,1-33.64,69.21A16.24,16.24,0,0,0,176,186v6a16,16,0,0,1-16,16H96a16,16,0,0,1-16-16v-6a16,16,0,0,0-6.23-12.66A87.59,87.59,0,0,1,40,104.49C39.74,56.83,78.26,17.14,125.88,16A88,88,0,0,1,216,104Zm-16,0a72,72,0,0,0-73.74-72c-39,.92-70.47,33.39-70.26,72.39a71.65,71.65,0,0,0,27.64,56.3A32,32,0,0,1,96,186v6h64v-6a32.15,32.15,0,0,1,12.47-25.35A71.65,71.65,0,0,0,200,104Zm-16.11-9.34a57.6,57.6,0,0,0-46.56-46.55,8,8,0,0,0-2.66,15.78c16.57,2.79,30.63,16.85,33.44,33.45A8,8,0,0,0,176,104a9,9,0,0,0,1.35-.11A8,8,0,0,0,183.89,94.66Z"/>'
 }
 Object.assign(ICONES_SEC, {   // ícones dos tópicos extras da Wiki (Phosphor Icons duotone, MIT)
+  evolucoes: '<path d="M128,40 L208,128 H160 V216 H96 V128 H48 Z" opacity="0.2"/><path d="M128,40 L208,128 H160 V216 H96 V128 H48 Z" fill="none" stroke="currentColor" stroke-width="16" stroke-linejoin="round" stroke-linecap="round"/>',
+  recompensas: '<rect x="40" y="112" width="176" height="104" rx="8" opacity="0.2"/><rect x="32" y="72" width="192" height="40" rx="8" fill="none" stroke="currentColor" stroke-width="16" stroke-linejoin="round" stroke-linecap="round"/><path d="M40,112 V208 a8,8,0,0,0,8,8 H208 a8,8,0,0,0,8-8 V112 M128,72 V216 M128,72 C112,36 72,36 76,60 C80,76 112,76 128,72 M128,72 C144,36 184,36 180,60 C176,76 144,76 128,72" fill="none" stroke="currentColor" stroke-width="16" stroke-linejoin="round" stroke-linecap="round"/>',
+  arcanas: '<rect x="64" y="32" width="128" height="192" rx="16" opacity="0.2"/><rect x="64" y="32" width="128" height="192" rx="16" fill="none" stroke="currentColor" stroke-width="16" stroke-linejoin="round" stroke-linecap="round"/><path d="M128,84 L141,111 L170,115 L149,135 L154,164 L128,150 L102,164 L107,135 L86,115 L115,111 Z" fill="none" stroke="currentColor" stroke-width="16" stroke-linejoin="round" stroke-linecap="round"/>',
+  modos: '<rect x="48" y="48" width="56" height="56" rx="8" opacity="0.2"/><rect x="152" y="48" width="56" height="56" rx="8" opacity="0.2"/><rect x="48" y="152" width="56" height="56" rx="8" opacity="0.2"/><rect x="152" y="152" width="56" height="56" rx="8" opacity="0.2"/><path d="M104,40H56A16,16,0,0,0,40,56v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V56A16,16,0,0,0,104,40Zm0,64H56V56h48Zm96-64H152a16,16,0,0,0-16,16v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V56A16,16,0,0,0,200,40Zm0,64H152V56h48Zm-96,32H56a16,16,0,0,0-16,16v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V152A16,16,0,0,0,104,136Zm0,64H56V152h48Zm96-64H152a16,16,0,0,0-16,16v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V152A16,16,0,0,0,200,136Zm0,64H152V152h48Z"/>',
   objetos: '<path d="M128,129.09V232a8,8,0,0,1-3.84-1l-88-48.16a8,8,0,0,1-4.16-7V80.2a8,8,0,0,1,.7-3.27Z" opacity="0.2"/><path d="M223.68,66.15,135.68,18h0a15.88,15.88,0,0,0-15.36,0l-88,48.17a16,16,0,0,0-8.32,14v95.64a16,16,0,0,0,8.32,14l88,48.17a15.88,15.88,0,0,0,15.36,0l88-48.17a16,16,0,0,0,8.32-14V80.18A16,16,0,0,0,223.68,66.15ZM128,32h0l80.34,44L128,120,47.66,76ZM40,90l80,43.78v85.79L40,175.82Zm96,129.57V133.82L216,90v85.78Z"/>',
   atividades: '<rect x="40" y="40" width="176" height="176" rx="24" opacity="0.2"/><rect x="40" y="40" width="176" height="176" rx="24" fill="none" stroke="currentColor" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/><circle cx="92" cy="92" r="12"/><circle cx="164" cy="92" r="12"/><circle cx="128" cy="128" r="12"/><circle cx="92" cy="164" r="12"/><circle cx="164" cy="164" r="12"/>',
   colecionaveis: '<path d="M128,32L216,112L128,224L40,112Z" opacity="0.2"/><path d="M128,32L216,112L128,224L40,112Z" fill="none" stroke="currentColor" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/><path d="M40,112H216" fill="none" stroke="currentColor" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/><path d="M96,112L128,32L160,112L128,224L96,112" fill="none" stroke="currentColor" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>',
