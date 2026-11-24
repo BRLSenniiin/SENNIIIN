@@ -90,6 +90,51 @@ const GUIAS = [
     progresso: 5,
     tags: { pt: ['Roguelite', 'Lista enorme', 'Em preparo'], en: ['Roguelite', 'Huge list', 'In progress'] },
     resumo: { pt: 'Platina de lista enorme: 284 troféus no PS5/PS4, 41 deles na lista base. Guia em preparo, com troféus e roteiro a caminho.', en: 'A platinum with a huge list: 284 trophies on PS5/PS4, 41 of them in the base list. Guide in progress, with trophies and roadmap on the way.' }
+  },
+  // Until Dawn (remake de 2024): 29 troféus (1 platina, 6 ouros, 9 pratas, 13 bronzes), todos offline. Dificuldade 3/10 e 15+ h: análise da lista de troféus.
+  // PROVISÓRIO: horasMax (20) e raridade ainda não têm fonte confirmada. playthroughs = 3 (o roteiro usa três jogatinas; o mínimo teórico é 2).
+  // perdiveis = 26: quase todos os troféus são perdíveis, só 3 não (a seleção de capítulo ajuda a recuperar).
+  {
+    id: 'until-dawn',
+    jogo: 'Until Dawn',
+    subtitulo: { pt: 'Terror interativo · Blackwood Mountain', en: 'Interactive horror · Blackwood Mountain' },
+    plataformas: ['PS5', 'PC'],
+    href: '#jogo/until-dawn',
+    hue: 205,
+    platina: true,
+    trofeus: 29,
+    dif: 3,
+    horasMin: 15,
+    horasMax: 20,
+    playthroughs: 3,
+    perdiveis: 26,
+    colecionaveis: 36,
+    raridade: null,
+    progresso: 25,
+    tags: { pt: ['Terror interativo', 'Todos offline', '3 jogatinas', 'Quase tudo perdível'], en: ['Interactive horror', 'All offline', '3 playthroughs', 'Almost all missable'] },
+    resumo: { pt: 'Platina fácil, mas de ordem rígida: 29 troféus, todos offline, em três jogatinas (todos vivos, só dois vivos e todos mortos). Quase tudo é perdível, e a seleção de capítulo ajuda a recuperar.', en: 'An easy platinum with a strict order: 29 trophies, all offline, across three playthroughs (everyone alive, only two alive and everyone dead). Nearly everything is missable, and chapter select helps you recover.' }
+  },
+  // BALL x PIT: 75 troféus no PS5 (64 do jogo base com a platina + 11 da DLC Risen Ballbylon). Raridade da platina ~11,3% (fonte consultada).
+  // PROVISÓRIO: dif (5), horasMin/horasMax (40/80) e playthroughs são estimativas minhas, sem fonte confirmada. perdiveis = 0 (nenhum perdível conhecido).
+  {
+    id: 'ball-x-pit',
+    jogo: 'BALL x PIT',
+    subtitulo: { pt: 'Quebra-blocos roguelite · Ballbylon', en: 'Brick-breaker roguelite · Ballbylon' },
+    plataformas: ['PS5', 'Xbox Series X|S', 'Switch', 'Switch 2', 'PC', 'Android', 'iOS'],
+    href: '#jogo/ball-x-pit',
+    hue: 28,
+    platina: true,
+    trofeus: 75,
+    dif: 5,
+    horasMin: 40,
+    horasMax: 80,
+    playthroughs: { pt: 'Partidas repetidas', en: 'Repeated runs' },
+    perdiveis: 0,
+    colecionaveis: 0,
+    raridade: 11.3,
+    progresso: 25,
+    tags: { pt: ['Roguelite', 'Repetição', 'Sem perdíveis', 'DLC com troféus'], en: ['Roguelite', 'Repetition', 'No missables', 'DLC trophies'] },
+    resumo: { pt: 'Platina de repetição: 75 troféus (64 no jogo base e 11 na DLC), sem perdíveis. O trabalho é concluir as 8 zonas, completar com os 16 personagens e construir a vila toda.', en: 'A repetition platinum: 75 trophies (64 in the base game and 11 in the DLC), no missables. The work is clearing the 8 zones, finishing with all 16 characters and building the whole village.' }
   }
   // TODO: adicionar novos guias aqui conforme forem concluídos (sempre com pt e en)
 ]

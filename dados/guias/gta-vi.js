@@ -79,7 +79,7 @@ JOGOS['gta-vi'] = {
       perdiveis: 5,
       veiculos: 0
     },
-    ocultas: ['bestiario', 'armaduras'],
+    ocultas: ['bestiario', 'armaduras', 'dlcs'],
     rotulos: { equipamentos: { pt: 'Armamentos', en: 'Weapons' }, veiculos: { pt: 'Transportes', en: 'Transport' } },
     // Troféus (aba Troféus), lista do Exophase (PS5), na ordem do jogo. Mesmos campos do Abiotic Factor; sem pct/exp/rar porque os números do Exophase ainda são provisórios (lançamento).
     // Nomes: pt = como aparecem no console em português; en = título em inglês tirado do endereço do troféu. Sem link para fora: o código 'ex' é só identificador.

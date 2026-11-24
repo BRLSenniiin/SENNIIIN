@@ -16,6 +16,8 @@ const ARQUIVOS_DO_SITE = [
   'dados/guias/abiotic-factor.js',
   'dados/guias/gta-vi.js',
   'dados/guias/vampire-survivors.js',
+  'dados/guias/until-dawn.js',
+  'dados/guias/ball-x-pit.js',
   'js/base.js',
   'js/paginas.js',
   'js/tela-do-jogo.js',

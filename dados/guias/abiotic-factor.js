@@ -73,6 +73,7 @@ JOGOS['abiotic-factor'] = {
     // Cada tópico recebe cartões numa lista com o mesmo nome (ex: objetos: [ { tag: 'Tipo', t: { pt: '...', en: '...' }, d: { pt: '...', en: '...' } } ]).
     // % descoberto de cada aba do jogo (número pequeno no menu do guia), de 0 a 100, escrito por você. Visão geral, Novidades e Dicas ficam de fora.
     // Aba sem número aqui usa o automático (0% se vazia, 5% se tiver conteúdo). Sem este bloco, o jogo não mostra porcentagem nenhuma.
+    ocultas: ['dlcs'],   // a aba DLCs só aparece onde o jogo a usa (hoje: Vampire Survivors)
     descoberto: { jogabilidade: 5, roteiro: 5, mapas: 0, bestiario: 5, personagens: 5, equipamentos: 5, armaduras: 5, trofeus: 100, perdiveis: 100,
       objetos: 0, veiculos: 0, profissoes: 0, tracos: 0, habilidades: 0, gatepal: 0, lore: 0, compendio: 0, hologramas: 0, emails: 0, registro: 0, anteversos: 0, gate101: 0, metajogo: 0, bugs: 0 },
     wiki: 'https://abioticfactor.wiki.gg/wiki/',

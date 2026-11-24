@@ -475,8 +475,10 @@ JOGOS['vampire-survivors'] = {
   rotulos: { mapas: { pt: 'Fases', en: 'Stages' }, equipamentos: { pt: 'Armas', en: 'Weapons' }, armaduras: { pt: 'Passivas', en: 'Passives' } },   // troca só o NOME da aba; os dados continuam em mapas: [], equipamentos: [] e armaduras: []
   evolucoes: [ { h: { pt: 'Exemplo: como uma arma evolui', en: 'Example: how a weapon evolves' } }, { p: { pt: 'Escreva aqui a regra de evolução e liste as combinações com { ul }.', en: 'Write the evolution rule here and list the combinations with { ul }.' } } ],   // EXEMPLO
   recompensas: [ { h: { pt: 'Exemplo: tipos de recompensa', en: 'Example: reward types' } }, { p: { pt: 'Escreva aqui o que cada recompensa dá e onde conseguir.', en: 'Write here what each reward gives and where to get it.' } } ],   // EXEMPLO
+  atributos: [ { h: { pt: 'Exemplo: atributos do personagem', en: 'Example: character stats' } }, { p: { pt: 'Escreva aqui o que cada atributo faz (vida, recuperação, área, velocidade...).', en: 'Write here what each stat does (health, recovery, area, speed...).' } } ],   // EXEMPLO
+  dlcs: [ { h: { pt: 'Exemplo: DLCs e conteúdo adicional', en: 'Example: DLCs and additional content' } }, { p: { pt: 'Escreva aqui o que cada DLC traz: fases, personagens, armas e os troféus ligados a ela.', en: 'Write here what each DLC brings: stages, characters, weapons and the trophies tied to it.' } } ],   // EXEMPLO
   arcanas: [ { h: { pt: 'Exemplo: o que são as Arcanas', en: 'Example: what Arcanas are' } }, { p: { pt: 'Escreva aqui como funcionam as Arcanas.', en: 'Write here how Arcanas work.' } } ],   // EXEMPLO
-  secoesExtra: ['evolucoes', 'recompensas', 'arcanas'],   // abas opcionais do bloco "Sistemas" ligadas neste jogo (cada uma vira uma lista de blocos: evolucoes: [], recompensas: [], arcanas: [])
+  secoesExtra: ['evolucoes', 'recompensas', 'arcanas', 'atributos'],   // abas opcionais do bloco "Sistemas" ligadas neste jogo (cada uma vira uma lista de blocos: evolucoes: [], recompensas: [], arcanas: [])
   // Imagens das palavras-chave do texto ([[id|palavra]]). Troque img: '' por img: 'imagens/arquivo.jpg'.
   refs: {
     evolucao: { img: '', razao: '16 / 9', alt: { pt: 'Uma arma evoluída', en: 'An evolved weapon' },

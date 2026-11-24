@@ -146,7 +146,19 @@ const DICAS = [
   },
   { id: 'd16', cat: 'Troféus', jogo: 'Vampire Survivors', img: '',
     titulo: { pt: 'Comece pela lista base', en: 'Start with the base list' },
-    texto:  { pt: 'A lista tem 284 troféus, mas só 41 são do jogo base. Os outros vêm das 29 seções de DLC e atualizações.', en: 'The list has 284 trophies, but only 41 are from the base game. The other ones come from 29 DLC and update sections.' } }
+    texto:  { pt: 'A lista tem 284 troféus, mas só 41 são do jogo base. Os outros vêm das 29 seções de DLC e atualizações.', en: 'The list has 284 trophies, but only 41 are from the base game. The other ones come from 29 DLC and update sections.' } },
+  { id: 'd17', cat: 'Perdíveis', jogo: 'Until Dawn', img: '',
+    titulo: { pt: 'Faça backup do save antes do final', en: 'Back up your save before the ending' },
+    texto:  { pt: 'A platina pede finais opostos. Guarde uma cópia do save da jogatina em que todos vivem antes de usar a seleção de capítulo do Capítulo 8.', en: 'The platinum asks for opposite endings. Keep a copy of the save from the run where everyone lives before using chapter select from Chapter 8.' } },
+  { id: 'd18', cat: 'Colecionáveis', jogo: 'Until Dawn', img: '',
+    titulo: { pt: 'Pegue totens e pistas na primeira jogatina', en: 'Grab totems and clues on the first run' },
+    texto:  { pt: 'São 36 totens e três linhas de pistas. Quem os coleta já na jogatina em que todos vivem economiza tempo depois.', en: 'There are 36 totems and three clue lines. Collecting them on the run where everyone lives saves time later.' } },
+  { id: 'd19', cat: 'Troféus', jogo: 'BALL x PIT', img: '',
+    titulo: { pt: 'Avance dois troféus em cada partida', en: 'Advance two trophies per run' },
+    texto:  { pt: 'Cada zona tem um troféu por concluir e outro por concluir com 10 personagens. Variar o personagem a cada partida avança as duas listas ao mesmo tempo.', en: 'Each zone has one trophy for clearing it and another for clearing it with 10 characters. Switching characters each run moves both lists forward.' } },
+  { id: 'd20', cat: 'Troféus', jogo: 'BALL x PIT', img: '',
+    titulo: { pt: 'A DLC não entra na platina', en: 'The DLC is not part of the platinum' },
+    texto:  { pt: 'Os 11 troféus de Risen Ballbylon ficam em um grupo à parte. Confira no seu PS5 antes de contar com eles.', en: 'The 11 Risen Ballbylon trophies are in a separate group. Check on your PS5 before counting on them.' } }
 ]
 
 // Dicas rápidas (stories no topo da aba Dicas). Um objeto por dica, as mais novas primeiro.

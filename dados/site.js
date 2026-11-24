@@ -24,6 +24,21 @@ const SITE = {
   email: ''                                                    // TODO: preencher e-mail de contato
 }
 
+// ── IMAGENS DA IDENTIDADE DO SITE (Wallpaper, Logo e Icon) ─────────────────────────────────────────────
+// Coloque os três arquivos na pasta Images/ (na raiz do site, ao lado de index.html), com ESTES nomes, em .webp:
+//   Images/Wallpaper.webp ... fundo do site inteiro (fica fixo atrás do conteúdo, com uma película escura para o texto continuar legível)
+//   Images/Logo.webp ........ marca no canto esquerdo do menu do topo (troca o desenho do troféu; o nome SENNIIIN continua ao lado)
+//   Images/Icon.webp ........ ícone da aba do navegador (favicon)
+// Maiúsculas e minúsculas importam no GitHub Pages: escreva exatamente Wallpaper.webp, Logo.webp, Icon.webp (e a pasta Images).
+// Enquanto um arquivo NÃO existir, o site continua com o visual de hoje para aquele item; não precisa mexer em mais nada.
+// Para outro nome ou pasta, mude só o texto entre aspas. Para desligar um item, deixe '' (vazio).
+// Quanto a película escura do Wallpaper escurece: veja --wallpaper-pelicula em css/site.css (0 = nada, 1 = preto).
+const IMAGENS_SITE = {
+  wallpaper: 'Images/Wallpaper.webp',
+  logo: 'Images/Logo.webp',
+  icon: 'Images/Icon.webp'
+}
+
 const ABAS = [
   { id: 'home',   rot: { pt: 'Início',     en: 'Home' } },
   { id: 'guias',  rot: { pt: 'Guias',      en: 'Guides' } },

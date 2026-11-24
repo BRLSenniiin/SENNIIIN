@@ -66,6 +66,13 @@
     font: 800 1.05rem/1 var(--f-display); letter-spacing: -.02em;
   }
   .brand svg { width: 26px; height: 26px; flex: 0 0 auto; }
+  .brand-logo { height: 26px; width: auto; max-width: 64px; object-fit: contain; flex: 0 0 auto; }   /* Images/Logo.webp (dados/site.js, IMAGENS_SITE) */
+  /* Images/Wallpaper.webp: fundo fixo atrás de tudo. --wallpaper-pelicula = quanto escurece (0 a 1); aumente se o texto ficar difícil de ler */
+  :root { --wallpaper-pelicula: .78; }
+  body.tem-wallpaper::before {
+    content: ''; position: fixed; inset: 0; z-index: -1; pointer-events: none;
+    background: linear-gradient(rgba(18,17,16,var(--wallpaper-pelicula)), rgba(18,17,16,var(--wallpaper-pelicula))), var(--wallpaper) center / cover no-repeat;
+  }
   .tabs {
     display: flex; flex: 1 1 auto; min-width: 0; gap: .1rem;
     overflow-x: auto; scrollbar-width: none; touch-action: pan-x;

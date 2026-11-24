@@ -13,6 +13,12 @@
 // badge: 'novo' | 'atualizado' | 'breve'. Use href (arquivo/link) OU aba (id de aba).
 // img (opcional): caminho da imagem do card, ex.: img: 'imagens/abiotic.jpg'. imgAlt (opcional): texto alternativo { pt, en }.
 const NOVIDADES = [
+  { tipo: 'guia', badge: 'novo', data: '2026-11-24', href: '#jogo/ball-x-pit',
+    titulo: { pt: 'BALL x PIT — guia de platina', en: 'BALL x PIT — platinum guide' },
+    texto: { pt: 'Guia em preparo com os 75 troféus (64 do jogo base e 11 da DLC), roteiro em 4 etapas, as 12 fases e os 16 personagens.', en: 'Guide in progress with the 75 trophies (64 base game and 11 DLC), a 4-step roadmap, the 12 stages and the 16 characters.' } },
+  { tipo: 'guia', badge: 'novo', data: '2026-11-23', href: '#jogo/until-dawn',
+    titulo: { pt: 'Until Dawn — guia de platina', en: 'Until Dawn — platinum guide' },
+    texto:  { pt: 'Remake de 2024: 29 troféus, roteiro em 3 jogatinas e a lista de perdíveis.', en: '2024 remake: 29 trophies, a 3-playthrough roadmap and the missables list.' } },
   { tipo: 'site', badge: 'atualizado', data: '2026-11-23', aba: 'guias',
     titulo: { pt: 'Plataformas em todos os guias', en: 'Platforms on every guide' },
     texto:  { pt: 'Cada jogo mostra os consoles e o PC onde existe, e a aba Guias ganhou um filtro para cada plataforma.', en: 'Each game shows the consoles and PC it is on, and the Guides tab got a filter for each platform.' } },

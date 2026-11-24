@@ -1,0 +1,11 @@
+PASTA Images/ — imagens da identidade do site
+=============================================
+Coloque aqui, com EXATAMENTE estes nomes (maiúsculas contam no GitHub), sempre em .webp:
+
+  Wallpaper.webp ... fundo do site inteiro (sugestão: 1920x1080 ou maior, ~300 KB)
+  Logo.webp ........ marca do menu do topo (sugestão: fundo transparente, altura 80 a 120 px)
+  Icon.webp ........ ícone da aba do navegador (sugestão: quadrado, 64x64 ou 128x128)
+
+Enquanto o arquivo não existir, o site usa o visual de hoje. Não precisa mexer em código.
+Os nomes e a pasta ficam em dados/site.js (IMAGENS_SITE). A força da película escura sobre o Wallpaper fica em css/site.css (--wallpaper-pelicula).
+Pode apagar este arquivo quando quiser.

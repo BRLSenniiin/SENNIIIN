@@ -10,7 +10,7 @@
 /* Sistemas base reaproveitados pelas páginas que cada jogo liga em secoesExtra: grade de itens (como Objetos), texto corrido (como Jogabilidade),
    fichas (como Personagens) e páginas por parte (como o Guia). Cada página usa um só sistema. */
 const IT_GEN = ['objetos', 'colecionaveis', 'animais', 'veiculos', 'propriedades']
-const TXT_SECS = ['policia', 'atributos', 'personalizacao', 'negocios', 'modos', 'evolucoes', 'recompensas', 'arcanas']
+const TXT_SECS = ['policia', 'atributos', 'personalizacao', 'negocios', 'modos', 'dlcs', 'evolucoes', 'recompensas', 'arcanas']
 const FICHA_SECS = ['relacionamento']
 const PARTES_SECS = ['atividades', 'segredos', 'propriedades']
 const IT_CATS = {
