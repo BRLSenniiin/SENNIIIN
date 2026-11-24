@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  SITEMAP: lista de endereços do site para o Google.
+  TROQUE "https://brlsenniiin.github.io/SENNIIIN" pelo endereço real do site (ex.: https://diariodeplatina.com.br) em TODAS as linhas.
+  Ao publicar um jogo novo, copie um bloco <url> e troque o final do endereço pelo <id>.html do jogo.
+  Depois de publicar, envie este arquivo no Google Search Console (menu Sitemaps).
+-->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://brlsenniiin.github.io/SENNIIIN/</loc></url>
+  <url><loc>https://brlsenniiin.github.io/SENNIIIN/abiotic-factor.html</loc></url>
+  <url><loc>https://brlsenniiin.github.io/SENNIIIN/gta-vi.html</loc></url>
+  <url><loc>https://brlsenniiin.github.io/SENNIIIN/vampire-survivors.html</loc></url>
+  <url><loc>https://brlsenniiin.github.io/SENNIIIN/until-dawn.html</loc></url>
+  <url><loc>https://brlsenniiin.github.io/SENNIIIN/ball-x-pit.html</loc></url>
+</urlset>
