@@ -51,22 +51,22 @@ JOGOS['gta-vi'] = {
           },
           {
             cap: { pt: 'Por precaução', en: 'To be safe' },
-            t: { pt: 'O guia consultado não confirma se essa sessão é obrigatória. O autor fez e o troféu liberou depois, então não pule.', en: 'The guide consulted does not confirm whether this session is required. The author did it and the trophy unlocked afterwards, so do not skip it.' },
+            t: { pt: 'Não está confirmado se essa sessão é obrigatória. O autor fez e o troféu liberou depois, então não pule.', en: 'It is not confirmed whether this session is required. The author did it and the trophy unlocked afterwards, so do not skip it.' },
             sub: [
               { pt: 'A última meditação só pode ser feita quando Jason e Lucia puderem jogar juntos, o que libera depois do Capítulo 2.', en: 'The final meditation can only be done once Jason and Lucia can play together, which unlocks after Chapter 2.' }
             ]
           }
         ],
-        fonte: { pt: 'Guia de troféus do PowerPyx.', en: 'PowerPyx trophy guide.' }
+        fonte: { pt: 'Análise própria da lista de troféus.', en: 'Own analysis of the trophy list.' }
       }
     ],
     notas: {
-      perdiveis: { pt: 'Toque no card para abrir o passo a passo. É um troféu possivelmente perdível: o guia de origem não confirma se a sessão do Capítulo 1 é obrigatória.', en: 'Tap the card to open its step by step. It is a possibly missable trophy: the source guide does not confirm whether the Chapter 1 session is required.' },
+      perdiveis: { pt: 'Toque no card para abrir o passo a passo. É um troféu possivelmente perdível: não está confirmado se a sessão do Capítulo 1 é obrigatória.', en: 'Tap the card to open its step by step. It is a possibly missable trophy: it is not confirmed whether the Chapter 1 session is required.' },
       trofeus: { pt: 'Troféus do jogo base no PS5. A raridade e a EXP ainda não foram preenchidas.', en: 'Base game trophies on PS5. Rarity and EXP have not been filled in yet.' },
       pessoas: { pt: 'Fonte: Wikipedia.', en: 'Source: Wikipedia.' },
-      colecionaveis: { pt: 'Números tirados da lista de troféus (guia do PowerPyx).', en: 'Numbers taken from the trophy list (PowerPyx guide).' },
-      animais: { pt: 'Número tirado do 100% (guia do PowerPyx).', en: 'Number taken from the 100% checklist (PowerPyx guide).' },
-      veiculos: { pt: 'O 100% pede escanear 200 dos 277 modelos de veículos (número tirado do guia do PowerPyx).', en: '100% asks you to scan 200 of the 277 vehicle models (number taken from the PowerPyx guide).' },
+      colecionaveis: { pt: 'Números tirados da lista de troféus.', en: 'Numbers taken from the trophy list.' },
+      animais: { pt: 'Número tirado do 100%.', en: 'Number taken from the 100% checklist.' },
+      veiculos: { pt: 'O 100% pede escanear 200 dos 277 modelos de veículos.', en: '100% asks you to scan 200 of the 277 vehicle models.' },
       equipamentos: { pt: 'Armas identificadas por fãs em trailers e imagens (Gfinity Esports, atualizado em 31/08/2026); a Rockstar não publicou uma lista oficial. Sem números de dano por enquanto.', en: 'Weapons identified by fans from trailers and screenshots (Gfinity Esports, updated 08/31/2026); Rockstar has not published an official list. No damage numbers yet.' }
     },
     descoberto: {
@@ -138,7 +138,7 @@ JOGOS['gta-vi'] = {
       { ex: 'dime-on-the-dollar', tipo: 'bronze', nome: { pt: 'Lavou, tá novo', en: 'Dime on the Dollar' }, desc: { pt: 'Ganhe $250.000 lavando cédulas marcadas por meio dos seus contatos.', en: 'Earn $250,000 laundering marked bills through your contacts.' }, img: '4037jgd1' },
       { ex: 'treat-yo-self', tipo: 'bronze', nome: { pt: 'Eu mereço', en: 'Treat Yo Self' }, desc: { pt: 'Gaste $100.000 em todas as lojas.', en: 'Spend $100,000 at every store.' }, img: '6d64ej13' },
       { ex: 'little-boxes', tipo: 'bronze', nome: { pt: 'Tudo reservado', en: 'Little Boxes' }, desc: { pt: 'Compre todas as propriedades de garagem.', en: 'Buy all the garage properties.' }, img: 'b80db513' },
-      { ex: 'on-the-spot', tipo: 'bronze', nome: { pt: 'Tá na mão', en: 'On the Spot' }, desc: { pt: 'Registre 10 veículos no aplicativo Scooter Bros.', en: 'Register 10 vehicles in the Scooter Bros. app.' }, img: 'gjeb8d4g', como: { pt: 'A platina libera ao conquistar os outros 54 troféus. O guia do PowerPyx estima cerca de 200 horas e dificuldade 4/10, sem níveis de dificuldade no jogo.', en: 'The platinum unlocks once you earn the other 54 trophies. The PowerPyx guide estimates about 200 hours and a 4/10 difficulty, with no difficulty settings in the game.' }, como: { pt: 'A lista de 100% libera depois da história, em Progresso > Estatísticas. Pede 70 dos 80 desafios, 200 dos 277 modelos de veículos e 100 dos 255 animais. Assaltos, descobertas subaquáticas, estandes de tiro, corridas de drone e as missões do Bret precisam estar completos.', en: 'The 100% checklist unlocks after the story, under Progress > Stats. It asks for 70 of the 80 challenges, 200 of the 277 vehicle models and 100 of the 255 animals. Robberies, underwater discoveries, shooting ranges, drone races and Bret\'s quests must be fully completed.' }, dica: { pt: 'É o troféu mais difícil da lista, segundo o guia do PowerPyx.', en: 'It is the hardest trophy on the list, according to the PowerPyx guide.' } }
+      { ex: 'on-the-spot', tipo: 'bronze', nome: { pt: 'Tá na mão', en: 'On the Spot' }, desc: { pt: 'Registre 10 veículos no aplicativo Scooter Bros.', en: 'Register 10 vehicles in the Scooter Bros. app.' }, img: 'gjeb8d4g', como: { pt: 'A platina libera ao conquistar os outros 54 troféus. Estimativa: cerca de 200 horas e dificuldade 4/10, sem níveis de dificuldade no jogo.', en: 'The platinum unlocks once you earn the other 54 trophies. Estimate: about 200 hours and a 4/10 difficulty, with no difficulty settings in the game.' }, como: { pt: 'A lista de 100% libera depois da história, em Progresso > Estatísticas. Pede 70 dos 80 desafios, 200 dos 277 modelos de veículos e 100 dos 255 animais. Assaltos, descobertas subaquáticas, estandes de tiro, corridas de drone e as missões do Bret precisam estar completos.', en: 'The 100% checklist unlocks after the story, under Progress > Stats. It asks for 70 of the 80 challenges, 200 of the 277 vehicle models and 100 of the 255 animals. Robberies, underwater discoveries, shooting ranges, drone races and Bret\'s quests must be fully completed.' }, dica: { pt: 'É o troféu mais difícil da lista.', en: 'It is the hardest trophy on the list.' } }
     ],
     secoesExtra: ['atividades', 'colecionaveis', 'propriedades', 'segredos', 'missoes', 'organizacoes', 'relacionamento', 'veiculos', 'servicos', 'negocios', 'animais', 'policia', 'personalizacao', 'atributos'],
     veiculos: [
@@ -151,12 +151,12 @@ JOGOS['gta-vi'] = {
       { id: 'estandes-de-tiro', status: 'base', t: { pt: 'Estandes de tiro', en: 'Shooting ranges' }, d: { pt: 'Uma das atividades exigidas para o 100%.', en: 'One of the activities required for 100%.' },
         corpo: [
           { h: { pt: 'O que se sabe', en: 'What is known' } },
-          { p: { pt: 'O 100% pede os estandes de tiro completos, segundo o guia de troféus do PowerPyx. Os detalhes de cada estande entram aqui conforme forem jogados.', en: '100% asks for the shooting ranges to be fully completed, according to the PowerPyx trophy guide. Details of each range will be added here as they are played.' } }
+          { p: { pt: 'O 100% pede os estandes de tiro completos. Os detalhes de cada estande entram aqui conforme forem jogados.', en: '100% asks for the shooting ranges to be fully completed. Details of each range will be added here as they are played.' } }
         ] },
       { id: 'corridas-de-drone', status: 'base', t: { pt: 'Corridas de drone', en: 'Drone races' }, d: { pt: 'Outra atividade exigida para o 100%.', en: 'Another activity required for 100%.' },
         corpo: [
           { h: { pt: 'O que se sabe', en: 'What is known' } },
-          { p: { pt: 'O 100% pede as corridas de drone completas, segundo o guia de troféus do PowerPyx. Os detalhes de cada corrida entram aqui conforme forem jogadas.', en: '100% asks for the drone races to be fully completed, according to the PowerPyx trophy guide. Details of each race will be added here as they are played.' } }
+          { p: { pt: 'O 100% pede as corridas de drone completas. Os detalhes de cada corrida entram aqui conforme forem jogadas.', en: '100% asks for the drone races to be fully completed. Details of each race will be added here as they are played.' } }
         ] }
     ],
     colecionaveis: [
@@ -364,7 +364,7 @@ JOGOS['gta-vi'] = {
             p: { pt: 'Cerca de <strong>10 horas</strong>. Termine o que faltar em Strangers & Freaks e as tarefas avulsas.', en: 'About <strong>10 hours</strong>. Finish whatever is left of Strangers & Freaks and the miscellaneous tasks.' }
           },
           {
-            destaque: { pt: 'Tempos e passos conforme o guia de troféus do PowerPyx; podem mudar com atualizações do jogo.', en: 'Times and steps per the PowerPyx trophy guide; they may change with game updates.' }
+            destaque: { pt: 'Tempos e passos podem mudar com atualizações do jogo.', en: 'Times and steps may change with game updates.' }
           }
         ]
       }
@@ -507,7 +507,7 @@ JOGOS['gta-vi'] = {
       },
       {
         t: { pt: 'Platina toda offline', en: 'An all-offline platinum' },
-        d: { pt: 'Os 55 troféus são offline: nenhum depende de modo online, segundo o guia do PowerPyx.', en: 'All 55 trophies are offline: none depends on an online mode, according to the PowerPyx guide.' }
+        d: { pt: 'Os 55 troféus são offline: nenhum depende de modo online.', en: 'All 55 trophies are offline: none depends on an online mode.' }
       }
     ],
     desenvolvedores: [
