@@ -26,8 +26,8 @@ JOGOS['gta-vi'] = {
     atualizado: '2026-11-19',
     img: '',
     abertura: [
-      { pt: '<strong>Grand Theft Auto VI</strong> é da Rockstar Games, para PlayStation 5 e Xbox Series X|S, com lançamento marcado para <strong>19 de novembro de 2026</strong>. A história se passa em Leonida, um estado fictício inspirado na Flórida que inclui Vice City, e tem Jason Duval e Lucia Caminos como protagonistas.', en: '<strong>Grand Theft Auto VI</strong> is from Rockstar Games, for PlayStation 5 and Xbox Series X|S, scheduled for release on <strong>November 19, 2026</strong>. The story takes place in Leonida, a fictional state based on Florida that includes Vice City, with Jason Duval and Lucia Caminos as the protagonists.' },
-      { pt: 'A platina, <strong>Vice Got a Price</strong>, vem de <strong>55 troféus</strong> (1 platina, 2 ouros, 6 pratas e 46 bronzes), todos offline. A dificuldade é baixa, mas o tempo é longo: cerca de <strong>200 horas</strong>. Só um troféu é possivelmente perdível; abra Perdíveis antes de avançar no Capítulo 1.', en: 'The platinum, <strong>Vice Got a Price</strong>, comes from <strong>55 trophies</strong> (1 platinum, 2 gold, 6 silver and 46 bronze), all offline. The difficulty is low but the time is long: about <strong>200 hours</strong>. Only one trophy is possibly missable; open Missables before moving on in Chapter 1.' }
+      { pt: '<strong>Grand Theft Auto VI</strong> é o novo título da Rockstar Games, desenvolvido principalmente pela Rockstar North, para PlayStation 5 e Xbox Series X|S. O jogo se passa em Leonida, um estado fictício inspirado na Flórida, e apresenta Jason Duval e Lucia Caminos como protagonistas. A história acompanha a dupla em uma trama envolvendo crimes, ambição e sobrevivência.', en: '<strong>Grand Theft Auto VI</strong> is the new title from Rockstar Games, developed mainly by Rockstar North, for PlayStation 5 and Xbox Series X|S. The game takes place in Leonida, a fictional state based on Florida, and features Jason Duval and Lucia Caminos as protagonists. The story follows the duo in a plot involving crime, ambition and survival.' },
+      { pt: 'A platina, <strong>Vice Got a Price</strong>, possui <strong>55 troféus</strong> (1 platina, 2 ouros, 6 pratas e 46 bronzes), todos offline. A dificuldade estimada é de 4/10, com aproximadamente <strong>200 horas</strong> para completar todas as conquistas. Existe um possível troféu perdível relacionado ao Capítulo 1, por isso consulte a aba Perdíveis antes de avançar.', en: 'The platinum, <strong>Vice Got a Price</strong>, has <strong>55 trophies</strong> (1 platinum, 2 gold, 6 silver and 46 bronze), all offline. The estimated difficulty is 4/10, with roughly <strong>200 hours</strong> to earn every trophy. There is one possibly missable trophy related to Chapter 1, so check the Missables tab before moving on.' }
     ],
     perdiveis: [
       {
@@ -410,16 +410,28 @@ JOGOS['gta-vi'] = {
         h: { pt: 'O jogo em poucas linhas', en: 'The game in a few lines' }
       },
       {
-        p: { pt: '<strong>Grand Theft Auto VI</strong> é publicado pela Rockstar Games, e a Rockstar North é o estúdio principal de desenvolvimento. A história se passa em Leonida, um estado fictício inspirado na Flórida que inclui Vice City, inspirada em Miami.', en: '<strong>Grand Theft Auto VI</strong> is published by Rockstar Games, with Rockstar North as the lead development studio. The story takes place in Leonida, a fictional state based on Florida that includes Vice City, inspired by Miami.' }
+        p: { pt: 'Grand Theft Auto VI é um jogo de ação e aventura em mundo aberto, publicado pela Rockstar Games e desenvolvido principalmente pela Rockstar North. A história acontece em Leonida, um estado fictício inspirado na Flórida, que abriga diferentes regiões e ambientes, incluindo Vice City, uma metrópole inspirada em Miami.', en: 'Grand Theft Auto VI is an open-world action-adventure game, published by Rockstar Games and developed mainly by Rockstar North. The story takes place in Leonida, a fictional state based on Florida, home to different regions and environments, including Vice City, a metropolis inspired by Miami.' }
       },
       {
-        p: { pt: 'O roteiro é de Rupert Humphries e Michael Wiafe, e o produtor é Rob Nelson. O jogo foi adiado duas vezes até chegar à data de 19 de novembro de 2026.', en: 'The writers are Rupert Humphries and Michael Wiafe, and the producer is Rob Nelson. The game was delayed twice before landing on the November 19, 2026 date.' }
+        p: { pt: 'O jogo apresenta dois protagonistas, Jason Duval e Lucia Caminos, cuja relação e envolvimento com o mundo do crime conduzem os acontecimentos da campanha. A narrativa explora temas como ambição, confiança e sobrevivência, enquanto os personagens tentam construir seu próprio caminho em um ambiente repleto de oportunidades e perigos.', en: 'The game features two protagonists, Jason Duval and Lucia Caminos, whose relationship and involvement with the criminal world drive the events of the campaign. The narrative explores themes such as ambition, trust and survival, as the characters try to build their own path in an environment full of opportunities and dangers.' }
+      },
+      {
+        p: { pt: 'Além da história principal, o mundo aberto oferece diferentes atividades, estabelecimentos, veículos, personagens e situações que contribuem para a exploração de Leonida.', en: 'Beyond the main story, the open world offers different activities, businesses, vehicles, characters and situations that add to the exploration of Leonida.' }
+      },
+      {
+        h: { pt: 'Sobre o desenvolvimento', en: 'About the development' }
+      },
+      {
+        p: { pt: 'Grand Theft Auto VI é produzido pela Rockstar Games, com a Rockstar North como principal estúdio responsável pelo desenvolvimento. O projeto passou por um longo período de produção e recebeu adiamentos até ser lançado em 19 de novembro de 2026.', en: 'Grand Theft Auto VI is produced by Rockstar Games, with Rockstar North as the main studio responsible for development. The project went through a long production period and was delayed before being released on November 19, 2026.' }
+      },
+      {
+        p: { pt: 'A expectativa em torno do jogo também foi impulsionada pela dimensão de sua produção, pela evolução técnica em relação aos títulos anteriores e pela proposta de apresentar um mundo aberto ainda mais detalhado e dinâmico.', en: 'Expectations around the game were also driven by the scale of its production, its technical evolution over previous titles and its aim of presenting an even more detailed and dynamic open world.' }
       },
       {
         h: { pt: 'Sobre este guia', en: 'About this guide' }
       },
       {
-        destaque: { pt: 'O guia está <strong>em construção</strong>. Já tem a base de Troféus, Perdíveis, Roteiro, Jogabilidade, Personagens, Curiosidades e Desenvolvedores, cada uma com poucos exemplos por enquanto.', en: 'The guide is <strong>under construction</strong>. It already has the base for Trophies, Missables, Walkthrough, Gameplay, Characters, Curiosities and Developers, each with a few examples for now.' }
+        destaque: { pt: 'O guia está <strong>em construção</strong>. Já conta com as abas Troféus, Perdíveis, Roteiro, Jogabilidade, Personagens, Curiosidades e Desenvolvedores, cada uma com informações iniciais que serão ampliadas conforme o conteúdo for desenvolvido.', en: 'The guide is <strong>under construction</strong>. It already has the Trophies, Missables, Walkthrough, Gameplay, Characters, Curiosities and Developers tabs, each with initial information that will be expanded as the content is developed.' }
       },
       {
         ir: 'trofeus',
