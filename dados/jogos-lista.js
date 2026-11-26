@@ -91,7 +91,7 @@ const GUIAS = [
     tags: { pt: ['Roguelite', 'Lista enorme', 'Em preparo'], en: ['Roguelite', 'Huge list', 'In progress'] },
     resumo: { pt: 'Platina de lista enorme: 284 troféus no PS5/PS4, 41 deles na lista base. Guia em preparo, com troféus e roteiro a caminho.', en: 'A platinum with a huge list: 284 trophies on PS5/PS4, 41 of them in the base list. Guide in progress, with trophies and roadmap on the way.' }
   },
-  // Until Dawn (remake de 2024): 29 troféus (1 platina, 6 ouros, 9 pratas, 13 bronzes), todos offline. Dificuldade 3/10 e 15+ h: análise da lista de troféus.
+  // Until Dawn (remake de 2024): 29 troféus (1 platina, 6 ouros, 9 pratas, 13 bronzes), todos offline. Dificuldade 2/10 e 15 a 30 h.
   // PROVISÓRIO: horasMax (20) e raridade ainda não têm fonte confirmada. playthroughs = 3 (o roteiro usa três jogatinas; o mínimo teórico é 2).
   // perdiveis = 26: quase todos os troféus são perdíveis, só 3 não (a seleção de capítulo ajuda a recuperar).
   {
@@ -103,9 +103,9 @@ const GUIAS = [
     hue: 205,
     platina: true,
     trofeus: 29,
-    dif: 3,
+    dif: 2,
     horasMin: 15,
-    horasMax: 20,
+    horasMax: 30,
     playthroughs: 3,
     perdiveis: 26,
     colecionaveis: 36,

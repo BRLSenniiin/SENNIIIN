@@ -13,26 +13,52 @@ JOGOS['until-dawn'] = {
   abertura: [
     { pt: '<strong>Until Dawn</strong> (remake de 2024, para PS5 e PC) tem <strong>29 troféus</strong>, com platina, todos offline. A dificuldade é baixa, mas quase todos os troféus dependem de escolhas que não dá para desfazer no meio da partida.',
       en: '<strong>Until Dawn</strong> (2024 remake, for PS5 and PC) has <strong>29 trophies</strong>, including a platinum, all offline. Difficulty is low, but nearly every trophy depends on choices you cannot undo mid-run.' },
-    { pt: 'Este guia foi montado a partir de uma análise da lista de troféus e está <strong>em preparo</strong>: o roteiro e os perdíveis já estão aqui, as demais abas serão preenchidas aos poucos.',
-      en: 'This guide was built from an analysis of the trophy list and is <strong>in progress</strong>: the roadmap and missables are already here, and the other tabs will be filled in over time.' }
+    { pt: 'O guia já tem o <strong>roteiro em quatro etapas</strong>, os <strong>14 perdíveis</strong> com passo a passo, os <strong>29 troféus</strong> detalhados, os oito personagens e a jogabilidade. As demais abas serão preenchidas aos poucos.',
+      en: 'The guide already has the <strong>four-step roadmap</strong>, the <strong>14 missables</strong> with step by step, the <strong>29 trophies</strong> in detail, the eight characters and the gameplay. The other tabs will be filled in over time.' }
   ],
   visaoGeral: [
     { h: { pt: 'O jogo em poucas linhas', en: 'The game in a few lines' } },
     { p: { pt: '<strong>Until Dawn</strong> é um drama de terror interativo em que você controla oito amigos presos numa montanha, no inverno. O original saiu em 2015 no PS4, feito pela Supermassive Games. Esta versão é o <strong>remake de 2024</strong>, feito pela Ballistic Moon para PS5 e PC, lançado em 4 de outubro de 2024 e refeito em Unreal Engine 5.',
            en: '<strong>Until Dawn</strong> is an interactive horror drama in which you control eight friends stuck on a mountain in winter. The original came out in 2015 on PS4, made by Supermassive Games. This is the <strong>2024 remake</strong>, made by Ballistic Moon for PS5 and PC, released on October 4, 2024 and rebuilt in Unreal Engine 5.' } },
+    { p: { pt: 'A história começa um ano depois do desaparecimento de duas amigas, as irmãs Hannah e Beth, na montanha. Os oito amigos voltam ao alojamento isolado onde tudo aconteceu, e a noite vira um pesadelo sem saída.',
+           en: 'The story starts a year after two friends, the sisters Hannah and Beth, vanished on the mountain. The eight friends return to the isolated lodge where it all happened, and the night turns into a nightmare with no way out.' } },
+    { h: { pt: 'Os oito amigos', en: 'The eight friends' } },
+    { ul: [
+      { pt: 'Sam (Samantha Giddings), Mike (Michael Munroe), Jessica (Jessica Riley) e Ashley (Ashley Brown).', en: 'Sam (Samantha Giddings), Mike (Michael Munroe), Jessica (Jessica Riley) and Ashley (Ashley Brown).' },
+      { pt: 'Chris (Christopher Hartley), Matt (Matthew Taylor), Emily (Emily Davis) e Josh (Joshua Washington).', en: 'Chris (Christopher Hartley), Matt (Matthew Taylor), Emily (Emily Davis) and Josh (Joshua Washington).' },
+      { pt: 'A aba Personagens mostra os troféus ligados a cada um.', en: 'The Characters tab shows the trophies tied to each one.' }
+    ] },
     { h: { pt: 'Como se joga', en: 'How it plays' } },
     { p: { pt: 'Você explora, escolhe respostas e falas, resolve eventos de reação rápida e, em certos momentos, precisa ficar imóvel. As escolhas mudam quem vive e quem morre até o amanhecer, e a lista de troféus gira em torno disso.',
            en: 'You explore, pick answers and lines, handle quick time events and, at certain moments, have to stay still. Your choices change who lives and who dies by dawn, and the trophy list revolves around that.' } },
+    { p: { pt: 'Pelo caminho há cinco tipos de coletáveis: pistas das Gêmeas, pistas do Homem Misterioso, pistas de 1952, totens e itens interativos. Cada tipo conta uma parte da história da montanha.',
+           en: 'Along the way there are five types of collectibles: Twin clues, Mystery Man clues, 1952 clues, totems and interactables. Each type tells a part of the mountain\'s story.' } },
     { h: { pt: 'O que mudou no remake', en: 'What changed in the remake' } },
     { ul: [
       { pt: 'Câmera por cima do ombro no lugar dos ângulos fixos, com gráficos e animações refeitos.', en: 'Over-the-shoulder camera instead of fixed angles, with rebuilt graphics and animations.' },
-      { pt: 'Totens de Fome, 10 novos itens interativos e conteúdo bônus.', en: 'Hunger Totems, 10 new interactables and bonus content.' },
+      { pt: 'Totens de Fome, 10 novos itens interativos e conteúdo bônus. Os totens também mudaram de lugar em relação ao jogo de 2015.', en: 'Hunger Totems, 10 new interactables and bonus content. The totems also moved compared with the 2015 game.' },
       { pt: '"Fique calmo" como alternativa ao "Não se mexa", prólogo refeito, mais cenas da Beth e um epílogo se a Sam sobreviver.', en: '"Stay Calm" as an alternative to "Don\'t Move", a reworked prologue, more Beth scenes and an epilogue if Sam survives.' },
+      { pt: 'Troféus novos: a lista mudou, então o que você sabe do jogo de 2015 não vale por inteiro.', en: 'New trophies: the list changed, so what you know from the 2015 game does not fully apply.' },
       { pt: 'Trilha nova de Mark Korven e música de abertura nova.', en: 'New score by Mark Korven and a new intro song.' }
     ] },
     { h: { pt: 'A platina', en: 'The platinum' } },
-    { p: { pt: 'São <strong>29 troféus</strong> (1 platina, 6 ouros, 9 pratas e 13 bronzes), todos offline, e o jogo não tem seletor de dificuldade. A dificuldade é <strong>3/10</strong> e o tempo é de cerca de <strong>15 horas ou mais</strong>. O desafio é a ordem: guarde um backup do save e siga o roteiro da aba Guia, em três jogatinas.',
-           en: 'There are <strong>29 trophies</strong> (1 platinum, 6 gold, 9 silver and 13 bronze), all offline, and the game has no difficulty selector. Difficulty is <strong>3/10</strong> and it takes about <strong>15 hours or more</strong>. The challenge is the order: keep a backup of your save and follow the roadmap in the Guide tab, in three playthroughs.' } },
+    { p: { pt: 'São <strong>29 troféus</strong> (1 platina, 6 ouros, 9 pratas e 13 bronzes), todos offline, e o jogo não tem seletor de dificuldade. A dificuldade é <strong>2/10</strong> e o tempo é de cerca de <strong>15 a 30 horas</strong>. O desafio é a ordem: guarde um backup do save e siga o roteiro da aba Guia, em três jogatinas.',
+           en: 'There are <strong>29 trophies</strong> (1 platinum, 6 gold, 9 silver and 13 bronze), all offline, and the game has no difficulty selector. Difficulty is <strong>2/10</strong> and it takes about <strong>15 to 30 hours</strong>. The challenge is the order: keep a backup of your save and follow the roadmap in the Guide tab, in three playthroughs.' } },
+    { ul: [
+      { pt: 'Dos 29 troféus, 5 são perdíveis de verdade, 21 exigem uma ação mas dá para refazer pela seleção de capítulo, e só 3 saem sozinhos.', en: 'Of the 29 trophies, 5 are truly missable, 21 require an action but can be redone through chapter select, and only 3 come on their own.' },
+      { pt: '7 troféus são de coletáveis e 1, o Fatal Destination, só sai depois de terminar o jogo.', en: '7 trophies are for collectibles and 1, Fatal Destination, only comes after finishing the game.' },
+      { pt: 'Não há save manual, só o automático, e a seleção de capítulo só abre depois de terminar o jogo uma vez.', en: 'There is no manual save, only the autosave, and chapter select only opens after you finish the game once.' },
+      { pt: 'A platina é a mais rara da lista: cerca de 18% dos jogadores rastreados a têm, e os 29 troféus somam 4.090 de EXP. Esses valores mudam com o tempo.', en: 'The platinum is the rarest on the list: about 18% of tracked players have it, and the 29 trophies add up to 4,090 EXP. These values change over time.' }
+    ] },
+    { h: { pt: 'O roteiro em resumo', en: 'The roadmap in short' } },
+    { ul: [
+      { pt: 'Etapa 1 (cerca de 5 horas): todos vivos e todos os coletáveis.', en: 'Step 1 (about 5 hours): everyone alive and all collectibles.' },
+      { pt: 'Etapa 2 (cerca de 2 horas): só Matt e Jessica vivos, refazendo a partir do Capítulo 8.', en: 'Step 2 (about 2 hours): only Matt and Jessica alive, replaying from Chapter 8.' },
+      { pt: 'Etapa 3 (cerca de 5 horas): todos mortos, em outro slot de save ou sobrescrevendo o atual.', en: 'Step 3 (about 5 hours): everyone dead, in another save slot or overwriting the current one.' },
+      { pt: 'Etapa 4: limpeza do que faltou pela seleção de capítulo.', en: 'Step 4: cleanup of anything missed through chapter select.' }
+    ] },
+    { destaque: { pt: 'Antes de começar: no Capítulo 1, como o Chris, não atire no esquilo, ou a Sam perde a chance de escapar do psicopata. Faça um backup do save antes da etapa 2. E lembre que, na seleção de capítulo, as escolhas só valem se você jogar até o fim.',
+           en: 'Before you start: in Chapter 1, as Chris, do not shoot the squirrel, or Sam loses her chance to escape the Psycho. Back up your save before step 2. And remember that, in chapter select, your choices only count if you play to the end.' } },
     { h: { pt: 'Como usar o guia', en: 'How to use the guide' } },
     { p: { pt: 'Comece pela aba <strong>Guia</strong> (o roteiro) e consulte <strong>Perdíveis</strong> antes de cada escolha importante. Os <strong>Troféus</strong> têm filtros por tipo e por perdível.',
            en: 'Start with the <strong>Guide</strong> tab (the roadmap) and check <strong>Missables</strong> before each important choice. <strong>Trophies</strong> has filters by type and by missable.' } }
@@ -332,7 +358,15 @@ JOGOS['until-dawn'] = {
       corpo: [ { h: { pt: 'O que já existe', en: 'What already exists' } }, { ul: [ { pt: 'Visão geral e jogabilidade.', en: 'Overview and gameplay.' }, { pt: 'Roteiro e perdíveis.', en: 'Roadmap and missables.' }, { pt: 'Lista dos 29 troféus.', en: 'The 29-trophy list.' } ] } ] }
   ],
   trilha: [
-    { por: 'Mark Korven', t: { pt: 'Nova trilha do remake', en: 'New score for the remake' }, youtube: '', onde: { pt: 'Durante todo o jogo', en: 'Throughout the game' }, d: { pt: 'O remake traz uma trilha nova, composta por Mark Korven, e uma música de abertura nova.', en: 'The remake brings a new score composed by Mark Korven and a new intro song.' } }
+      { por: 'Mark Korven', t: 'Trilha nova do remake (Mark Korven)', onde: { pt: 'Durante todo o jogo', en: 'Throughout the game' }, d: { pt: 'O remake traz uma trilha nova, composta por Mark Korven, que estreou em videogames com este jogo. Ele é conhecido pelos filmes A Bruxa e O Farol.', en: 'The remake has a new score by Mark Korven, whose first video game this is. He is known for the films The Witch and The Lighthouse.' } },
+      { por: 'Mae Stephens', t: 'Out of the Shadows', onde: { pt: 'Abertura e créditos', en: 'Opening and credits' }, d: { pt: 'Música de abertura nova do remake, escrita para a sequência de título. A artista, antes sem contrato, foi escolhida depois de uma demo.', en: 'The remake\'s new opening song, written for the title sequence. The artist, previously unsigned, was picked after a demo.' } },
+      { por: 'So Below', t: 'Forgive and Forget', onde: { pt: 'Abertura e créditos', en: 'Opening and credits' }, d: { pt: 'Música feita sob medida para os créditos finais.', en: 'A song made to order for the end credits.' } },
+      { por: 'Purity Ring', t: 'Obedear', onde: { pt: 'Cenas do jogo', en: 'Game scenes' }, d: { pt: 'Toca no Prólogo, no laptop da Hannah.', en: 'Plays in the Prologue, on Hannah\'s laptop.' } },
+      { por: 'Maverick Sabre', t: 'Let Me Go', onde: { pt: 'Cenas do jogo', en: 'Game scenes' }, d: { pt: 'Toca no celular da Jessica, na caminhada até a cabana (Capítulo 2).', en: 'Plays on Jessica\'s phone during the walk to the cabin (Chapter 2).' } },
+      { por: 'SG Lewis', t: 'Warm', onde: { pt: 'Cenas do jogo', en: 'Game scenes' }, d: { pt: 'Toca na guerra de bolas de neve entre Jessica e Mike.', en: 'Plays during the snowball fight between Jessica and Mike.' } },
+      { por: 'Lucy Hayes', t: 'In For The Kill (cover de La Roux)', onde: { pt: 'Cenas do jogo', en: 'Game scenes' }, d: { pt: 'Versão nova gravada para o jogo. Toca na cena da pegadinha cruel, com a Hannah se preparando para ver o Mike.', en: 'A new version recorded for the game. Plays in the cruel prank scene, with Hannah getting ready to see Mike.' } },
+      { por: 'Delegation', t: 'Oh Honey', onde: { pt: 'Cenas do jogo', en: 'Game scenes' }, d: { pt: 'Toca quando a Sam está no banho.', en: 'Plays when Sam is in the bath.' } },
+      { por: 'Jason Graves', t: 'O Death', onde: { pt: 'Cenas do jogo', en: 'Game scenes' }, d: { pt: 'A música-tema do jogo original, de 2015. No remake a abertura mudou, mas ela ainda pode ser ouvida pelos fones da Sam se você ficar parada no banho.', en: 'The theme of the 2015 original game. The remake changed the opening, but you can still hear it through Sam\'s headphones if you stay still in the bath.' } }
   ],
   detalhes: [                    // EXEMPLO: mural de imagens. Coloque o arquivo em imagens/ e escreva img: 'imagens/arquivo.jpg'
     { t: { pt: 'Exemplo: imagem do mural', en: 'Example: mural image' }, larg: 2, prop: '2 / 1', img: '', alt: { pt: 'Descrição da imagem', en: 'Image description' } }
@@ -342,8 +376,21 @@ JOGOS['until-dawn'] = {
     { t: { pt: 'Epílogo só se a Sam sobreviver', en: 'Epilogue only if Sam survives' }, d: { pt: 'O remake tem um epílogo que só aparece quando a Sam sobrevive.', en: 'The remake has an epilogue that only plays if Sam survives.' } }
   ],
   desenvolvedores: [
-    { nome: 'Ballistic Moon', cargo: { pt: 'Estúdio do remake', en: 'Remake studio' }, neste: { pt: 'Fez o remake de 2024, para PS5 e PC.', en: 'Made the 2024 remake, for PS5 and PC.' } },
-    { nome: 'Supermassive Games', cargo: { pt: 'Estúdio do jogo original', en: 'Original game studio' }, neste: { pt: 'Fez o Until Dawn de 2015, para PS4.', en: 'Made the 2015 Until Dawn, for PS4.' } }
+    { nome: 'Ballistic Moon', cargo: { pt: 'Estúdio do remake', en: 'Remake studio' }, neste: { pt: 'Fez o remake de 2024, para PS5 e PC, em Unreal Engine 5. O estúdio, do Reino Unido, foi fechado depois do lançamento.', en: 'Made the 2024 remake, for PS5 and PC, in Unreal Engine 5. The UK studio closed after launch.' },
+      trabalhos: [ { t: 'Until Dawn (remake)', ano: 2024, tipo: 'jogo', papel: { pt: 'Desenvolvedor', en: 'Developer' } } ] },
+    { nome: 'Supermassive Games', cargo: { pt: 'Estúdio do jogo original', en: 'Original game studio' }, neste: { pt: 'Fez o Until Dawn de 2015, para PS4.', en: 'Made the 2015 Until Dawn, for PS4.' },
+      trabalhos: [ { t: 'Until Dawn', ano: 2015, tipo: 'jogo', papel: { pt: 'Desenvolvedor', en: 'Developer' } } ] },
+    { nome: 'PlayStation Studios', cargo: { pt: 'Publicação', en: 'Publisher' }, neste: { pt: 'Publica o jogo; a equipe de música da PlayStation Studios também trabalhou na trilha do remake.', en: 'Publishes the game; the PlayStation Studios music team also worked on the remake\'s soundtrack.' } },
+    { nome: 'Neil McEwan', cargo: { pt: 'Diretor criativo do remake', en: 'Remake creative director' }, neste: { pt: 'Comentou as mudanças do Prólogo no remake.', en: 'Commented on the Prologue changes in the remake.' },
+      trabalhos: [ { t: 'Until Dawn (remake)', ano: 2024, tipo: 'jogo', papel: { pt: 'Diretor criativo', en: 'Creative director' } } ] },
+    { nome: 'Will Byles', cargo: { pt: 'Diretor do jogo original', en: 'Original game director' }, neste: { pt: 'Dirigiu o Until Dawn de 2015 na Supermassive Games.', en: 'Directed the 2015 Until Dawn at Supermassive Games.' },
+      trabalhos: [ { t: 'Until Dawn', ano: 2015, tipo: 'jogo', papel: { pt: 'Diretor', en: 'Director' } } ] },
+    { nome: 'Mark Korven', cargo: { pt: 'Compositor do remake', en: 'Remake composer' }, neste: { pt: 'Compôs a trilha nova do remake, a sua estreia em videogames.', en: 'Composed the remake\'s new score, his video game debut.' },
+      trabalhos: [ { t: 'Until Dawn (remake)', ano: 2024, tipo: 'jogo', papel: { pt: 'Compositor', en: 'Composer' } }, { t: 'A Bruxa', ano: 2015, tipo: 'filme', papel: { pt: 'Compositor', en: 'Composer' } }, { t: 'O Farol', ano: 2019, tipo: 'filme', papel: { pt: 'Compositor', en: 'Composer' } } ] },
+    { nome: 'Jason Graves', cargo: { pt: 'Compositor do jogo original', en: 'Original game composer' }, neste: { pt: 'Compôs a trilha do Until Dawn de 2015, incluindo a música-tema "O Death".', en: 'Composed the 2015 Until Dawn score, including the theme "O Death".' },
+      trabalhos: [ { t: 'Until Dawn', ano: 2015, tipo: 'jogo', papel: { pt: 'Compositor', en: 'Composer' } } ] },
+    { nome: 'Larry Fessenden', cargo: { pt: 'Roteirista do jogo original', en: 'Original game writer' }, neste: { pt: 'Um dos roteiristas do Until Dawn de 2015.', en: 'One of the writers of the 2015 Until Dawn.' } },
+    { nome: 'Graham Reznick', cargo: { pt: 'Roteirista do jogo original', en: 'Original game writer' }, neste: { pt: 'Um dos roteiristas do Until Dawn de 2015.', en: 'One of the writers of the 2015 Until Dawn.' } }
   ],
   trofeus: [
       { ex: 'a-symphony-of-horror', tipo: 'platina', nome: { pt: 'Uma sinfonia de troféus de terror', en: 'A Symphony of Horror' }, desc: { pt: 'Você conquistou todos os troféus de bronze, prata e ouro de Until Dawn.', en: 'You collected all Gold, Silver, and Bronze trophies in Until Dawn.' }, perdivel: 'atencao', pct: 18.16, exp: 234, rar: 'raro', img: '13713344', como: { pt: 'Conquiste os outros 28 troféus do jogo. Não há DLC nem seletor de dificuldade: a platina sai sozinha quando o último troféu cair.', en: 'Earn the other 28 trophies in the game. There is no DLC and no difficulty selector: the platinum pops by itself when the last trophy lands.' }, dica: { pt: 'Siga as quatro etapas da aba Guia. Premonição é o que costuma sobrar no fim: dá para fazê-lo a qualquer momento depois de A cabana em Blackwood.', en: 'Follow the four steps in the Guide tab. Fatal Destination is usually what is left at the end: you can do it any time after The Cabin in the Blackwoods.' } },
