@@ -27,7 +27,7 @@ const SITE = {
 // ── IMAGENS DA IDENTIDADE DO SITE (Wallpaper, Logo e Icon) ─────────────────────────────────────────────
 // Coloque os três arquivos na pasta Images/ (na raiz do site, ao lado de index.html), com ESTES nomes, em .webp:
 //   Images/Wallpaper.webp ... fundo do site inteiro (fica fixo atrás do conteúdo, com uma película escura para o texto continuar legível)
-//   Images/Logo.webp ........ marca no canto esquerdo do menu do topo (troca o desenho do troféu; o nome SENNIIIN continua ao lado)
+//   Images/LOGO.webp ........ marca no canto esquerdo do menu do topo (troca o desenho do troféu e o texto SENNIIIN, pois a logo já traz o nome)
 //   Images/Icon.webp ........ ícone da aba do navegador (favicon)
 // Maiúsculas e minúsculas importam no GitHub Pages: escreva exatamente Wallpaper.webp, Logo.webp, Icon.webp (e a pasta Images).
 // Enquanto um arquivo NÃO existir, o site continua com o visual de hoje para aquele item; não precisa mexer em mais nada.
