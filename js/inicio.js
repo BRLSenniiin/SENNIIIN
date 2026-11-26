@@ -13,7 +13,7 @@ function aplicarImagensSite() {
   usarSeExistir(IMAGENS_SITE.icon, url => {
     let l = document.querySelector('link[rel="icon"]')
     if (!l) { l = document.createElement('link'); l.rel = 'icon'; document.head.appendChild(l) }
-    l.type = 'image/webp'; l.href = url
+    l.type = /\.ico$/i.test(url) ? 'image/x-icon' : 'image/webp'; l.href = url   // .ico = image/x-icon
   })
   usarSeExistir(IMAGENS_SITE.logo, url => {
     const marca = document.querySelector('.brand svg')

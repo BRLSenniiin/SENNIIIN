@@ -28,15 +28,15 @@ const SITE = {
 // Coloque os três arquivos na pasta Images/ (na raiz do site, ao lado de index.html), com ESTES nomes, em .webp:
 //   Images/Wallpaper.webp ... fundo do site inteiro (fica fixo atrás do conteúdo, com uma película escura para o texto continuar legível)
 //   Images/LOGO.webp ........ marca no canto esquerdo do menu do topo (troca o desenho do troféu e o texto SENNIIIN, pois a logo já traz o nome)
-//   Images/Icon.webp ........ ícone da aba do navegador (favicon)
-// Maiúsculas e minúsculas importam no GitHub Pages: escreva exatamente Wallpaper.webp, Logo.webp, Icon.webp (e a pasta Images).
+//   Images/Icon.ico ......... ícone da aba do navegador (favicon; é .ico, não .webp)
+// Maiúsculas e minúsculas importam no GitHub Pages: escreva exatamente Wallpaper.webp, LOGO.webp, Icon.ico (e a pasta Images).
 // Enquanto um arquivo NÃO existir, o site continua com o visual de hoje para aquele item; não precisa mexer em mais nada.
 // Para outro nome ou pasta, mude só o texto entre aspas. Para desligar um item, deixe '' (vazio).
 // Quanto a película escura do Wallpaper escurece: veja --wallpaper-pelicula em css/site.css (0 = nada, 1 = preto).
 const IMAGENS_SITE = {
   wallpaper: 'Images/Wallpaper.webp',
   logo: 'Images/LOGO.webp',
-  icon: 'Images/Icon.webp'
+  icon: 'Images/Icon.ico'
 }
 
 const ABAS = [

@@ -22,6 +22,24 @@ JOGOS['until-dawn'] = {
            en: '<strong>Until Dawn</strong> is an interactive horror drama in which you control eight friends stuck on a mountain in winter. The original came out in 2015 on PS4, made by Supermassive Games. This is the <strong>2024 remake</strong>, made by Ballistic Moon for PS5 and PC, released on October 4, 2024 and rebuilt in Unreal Engine 5.' } },
     { p: { pt: 'A história começa um ano depois do desaparecimento de duas amigas, as irmãs Hannah e Beth, na montanha. Os oito amigos voltam ao alojamento isolado onde tudo aconteceu, e a noite vira um pesadelo sem saída.',
            en: 'The story starts a year after two friends, the sisters Hannah and Beth, vanished on the mountain. The eight friends return to the isolated lodge where it all happened, and the night turns into a nightmare with no way out.' } },
+    { h: { pt: 'Ficha técnica', en: 'Fact sheet' } },
+    { ul: [
+      { pt: '<strong>Desenvolvimento:</strong> Ballistic Moon. <strong>Publicação:</strong> Sony Interactive Entertainment.', en: '<strong>Developer:</strong> Ballistic Moon. <strong>Publisher:</strong> Sony Interactive Entertainment.' },
+      { pt: '<strong>Direção:</strong> Dan Lodge e Alessandro Gaudiosi. <strong>Diretor criativo:</strong> Neil McEwan.', en: '<strong>Directors:</strong> Dan Lodge and Alessandro Gaudiosi. <strong>Creative director:</strong> Neil McEwan.' },
+      { pt: '<strong>Roteiro:</strong> Larry Fessenden, Graham Reznick e Alessandro Gaudiosi (Will McNally, sem crédito). <strong>Trilha:</strong> Mark Korven.', en: '<strong>Writers:</strong> Larry Fessenden, Graham Reznick and Alessandro Gaudiosi (Will McNally, uncredited). <strong>Score:</strong> Mark Korven.' },
+      { pt: '<strong>Gênero:</strong> terror de sobrevivência, aventura e exploração, só para um jogador.', en: '<strong>Genre:</strong> survival horror, adventure and exploration, single-player only.' },
+      { pt: '<strong>Lançamento:</strong> 4 de outubro de 2024, para PS5 e PC (Windows).', en: '<strong>Release:</strong> October 4, 2024, for PS5 and PC (Windows).' },
+      { pt: '<strong>Classificação indicativa:</strong> ESRB Mature, PEGI 18 e CERO Z.', en: '<strong>Age rating:</strong> ESRB Mature, PEGI 18 and CERO Z.' },
+      { pt: '<strong>Tamanho no PS5:</strong> 56 GB, 10 GB a mais que o original.', en: '<strong>Size on PS5:</strong> 56 GB, 10 GB more than the original.' }
+    ] },
+    { h: { pt: 'Como o remake foi feito', en: 'How the remake was made' } },
+    { p: { pt: 'Em janeiro de 2024, a Sony anunciou a versão para PS5 e PC e entregou o trabalho ao estúdio britânico Ballistic Moon. A data de lançamento saiu em maio de 2024, em um State of Play.',
+           en: 'In January 2024, Sony announced the PS5 and PC version and handed the job to the UK studio Ballistic Moon. The release date came in May 2024, during a State of Play.' } },
+    { p: { pt: 'O jogo roda em Unreal Engine 5 (o original usava o motor Decima), com visuais, animações e detalhes de cenário bem melhorados, além de ajustes de controles, de câmera e na história. A narrativa original foi mantida, mas o Prólogo foi refeito: os Washington ganharam mais tempo de tela e a cena do trote foi reenquadrada e ganhou mais contexto.',
+           en: 'The game runs on Unreal Engine 5 (the original used the Decima engine), with much improved visuals, animations and environmental detail, plus changes to the controls, the camera and the story. The original narrative was kept, but the Prologue was reworked: the Washingtons get more screen time and the prank scene was reframed and given more context.' } },
+    { h: { pt: 'Remake, não remaster', en: 'Remake, not remaster' } },
+    { p: { pt: 'O título é só "Until Dawn", sem a palavra "remake" nem "remaster", e isso gera confusão. Como o jogo foi refeito em outro motor, ganhou conteúdo e teve a trilha recomposta, ele é um remake. A PlayStation o apresenta como uma versão "reconstruída e aprimorada" para PS5 e PC.',
+           en: 'The title is just "Until Dawn", with neither "remake" nor "remaster" in it, which causes confusion. Since the game was rebuilt in another engine, gained content and had its score recomposed, it is a remake. PlayStation presents it as a "rebuilt and enhanced" version for PS5 and PC.' } },
     { h: { pt: 'Os oito amigos', en: 'The eight friends' } },
     { ul: [
       { pt: 'Sam (Samantha Giddings), Mike (Michael Munroe), Jessica (Jessica Riley) e Ashley (Ashley Brown).', en: 'Sam (Samantha Giddings), Mike (Michael Munroe), Jessica (Jessica Riley) and Ashley (Ashley Brown).' },
@@ -41,6 +59,19 @@ JOGOS['until-dawn'] = {
       { pt: 'Troféus novos: a lista mudou, então o que você sabe do jogo de 2015 não vale por inteiro.', en: 'New trophies: the list changed, so what you know from the 2015 game does not fully apply.' },
       { pt: 'Trilha nova de Mark Korven e música de abertura nova.', en: 'New score by Mark Korven and a new intro song.' }
     ] },
+    { h: { pt: 'Mudanças que afetam a jogatina', en: 'Changes that affect your run' } },
+    { ul: [
+      { pt: 'Os troféus passaram de 19 para 29: foram revelados 20 troféus novos e 10 do original saíram. Alguns são versões atualizadas de antigos: An Omen? (era Night of the Totem Hunter), Saw That Coming (era Scream Too!) e Nightmare on Ash Street (era Ashley Snaps).', en: 'Trophies went from 19 to 29: 20 new trophies were revealed and 10 from the original were removed. Some are updated versions of old ones: An Omen? (was Night of the Totem Hunter), Saw That Coming (was Scream Too!) and Nightmare on Ash Street (was Ashley Snaps).' },
+      { pt: 'O primeiro troféu sai já ao terminar o Prólogo. No original, ele só vinha no Sanatório, ao cortar os dedos do Mike.', en: 'The first trophy comes as soon as you finish the Prologue. In the original it only came at the Sanatorium, when cutting off Mike\'s fingers.' },
+      { pt: 'Totens: os originais foram escondidos em lugares novos, alguns têm premonições novas, e agora é preciso girar o totem à mão para achar a premonição.', en: 'Totems: the originals were re-hidden in new places, some have new premonitions, and you now have to rotate the totem by hand to find the premonition.' },
+      { pt: 'As pistas agora são avisadas por uma lupa que aparece na tela, no lugar do clarão rápido do original.', en: 'Clues are now flagged by a magnifying glass popping up on screen, instead of the brief flash of the original.' },
+      { pt: 'Correr é automático e só acontece em certos momentos. Também dá para escolher a proporção de tela.', en: 'Running is automatic and only happens at certain moments. You can also choose the aspect ratio.' },
+      { pt: 'O trecho do Matt e da Emily no Capítulo 2, que no original só vinha na pré-venda e na versão estendida, agora é parte fixa do jogo.', en: 'Matt and Emily\'s segment in Chapter 2, which in the original only came with the pre-order and extended versions, is now a permanent part of the game.' },
+      { pt: 'A história começa duas horas mais cedo: das 19h às 5h. Os resumos "Previously on Until Dawn" antes de cada capítulo foram removidos.', en: 'The story starts two hours earlier: from 7 PM to 5 AM. The "Previously on Until Dawn" recaps before each chapter were removed.' },
+      { pt: 'Algumas falas que o jogador precisava disparar agora tocam sozinhas, e no Capítulo 7 a Emily acha a cabeça da Beth em uma cena automática, não mais por interação opcional.', en: 'Some lines the player had to trigger now play on their own, and in Chapter 7 Emily finds Beth\'s head in an automatic scene, no longer through an optional interaction.' },
+      { pt: 'O efeito borboleta "Important Discovery" foi trocado por "A Second Chance".', en: 'The "Important Discovery" Butterfly Effect was replaced by "A Second Chance".' },
+      { pt: 'Capítulo 8: o Mike precisa de dois eventos de ação rápida para matar a Emily (carregar a arma e atirar). Na terapia, o Josh ganha a opção "They need to change", que gera um novo efeito borboleta.', en: 'Chapter 8: Mike needs two quick time events to kill Emily (load the gun, then shoot). In therapy, Josh gets the "They need to change" option, which triggers a new Butterfly Effect.' }
+    ] },
     { h: { pt: 'A platina', en: 'The platinum' } },
     { p: { pt: 'São <strong>29 troféus</strong> (1 platina, 6 ouros, 9 pratas e 13 bronzes), todos offline, e o jogo não tem seletor de dificuldade. A dificuldade é <strong>2/10</strong> e o tempo é de cerca de <strong>15 a 30 horas</strong>. O desafio é a ordem: guarde um backup do save e siga o roteiro da aba Guia, em três jogatinas.',
            en: 'There are <strong>29 trophies</strong> (1 platinum, 6 gold, 9 silver and 13 bronze), all offline, and the game has no difficulty selector. Difficulty is <strong>2/10</strong> and it takes about <strong>15 to 30 hours</strong>. The challenge is the order: keep a backup of your save and follow the roadmap in the Guide tab, in three playthroughs.' } },
@@ -59,6 +90,24 @@ JOGOS['until-dawn'] = {
     ] },
     { destaque: { pt: 'Antes de começar: no Capítulo 1, como o Chris, não atire no esquilo, ou a Sam perde a chance de escapar do psicopata. Faça um backup do save antes da etapa 2. E lembre que, na seleção de capítulo, as escolhas só valem se você jogar até o fim.',
            en: 'Before you start: in Chapter 1, as Chris, do not shoot the squirrel, or Sam loses her chance to escape the Psycho. Back up your save before step 2. And remember that, in chapter select, your choices only count if you play to the end.' } },
+    { h: { pt: 'Finais novos e epílogo (spoiler)', en: 'New endings and epilogue (spoiler)' } },
+    { destaque: { pt: '<strong>Spoiler:</strong> esta parte revela finais do jogo. Pule até "No PC" se quiser jogar sem saber.',
+           en: '<strong>Spoiler:</strong> this part reveals endings. Skip ahead to "On PC" if you want to play without knowing.' } },
+    { ul: [
+      { pt: 'O Josh ganhou um terceiro destino, além de morrer ou virar Wendigo: ele sobrevive, ainda humano, quando a polícia o encontra, sem ter recorrido ao canibalismo.', en: 'Josh gets a third fate, besides dying or turning into a Wendigo: he survives, still human, when the police find him, having not resorted to cannibalism.' },
+      { pt: 'Para chegar a esse final, a Sam precisa pegar o diário da Hannah (pista nº 20 das Gêmeas), o Josh precisa mostrar remorso na terapia do Capítulo 8 e nenhum dos amigos pode morrer durante a noite.', en: 'To reach this ending, Sam must pick up Hannah\'s journal (Twins clue #20), Josh must show remorse in the Chapter 8 therapy session, and none of the friends can die during the night.' },
+      { pt: 'Se a Sam sobreviver, há um epílogo novo, anos depois, com ela em casa, em Los Angeles, sem conseguir dormir. A cena termina quando uma cicatriz estranha no braço dela sangra sem parar e uma voz chama seu nome.', en: 'If Sam survives, there is a new epilogue, years later, with her at home in Los Angeles, unable to sleep. The scene ends when a strange scar on her arm bleeds nonstop and a voice calls her name.' },
+      { pt: 'Nos créditos, a montagem das mortes dos protagonistas não mostra mais os nomes nem o horário da morte.', en: 'In the credits, the montage of the protagonists\' deaths no longer shows their names or time of death.' }
+    ] },
+    { h: { pt: 'No PC', en: 'On PC' } },
+    { ul: [
+      { pt: '<strong>Mínimo</strong> (720p a 30 FPS, predefinição Baixa): Windows 10 ou 11; Intel Core i7 4790K ou AMD Ryzen 5 1500X (com suporte a AVX); 8 GB de RAM; GeForce GTX 1660 ou Radeon RX 470 (com pelo menos 6 GB de VRAM); 70 GB em SSD.', en: '<strong>Minimum</strong> (720p at 30 FPS, Low preset): Windows 10 or 11; Intel Core i7 4790K or AMD Ryzen 5 1500X (with AVX support); 8 GB RAM; GeForce GTX 1660 or Radeon RX 470 (with at least 6 GB VRAM); 70 GB on SSD.' },
+      { pt: '<strong>Recomendado</strong> (1080p a 60 FPS, predefinição Média): Windows 10 ou 11; Intel Core i5 8600 ou AMD Ryzen 7 2700X; 16 GB de RAM; GeForce RTX 2060 ou Radeon RX 6600 XT; 70 GB em SSD.', en: '<strong>Recommended</strong> (1080p at 60 FPS, Medium preset): Windows 10 or 11; Intel Core i5 8600 or AMD Ryzen 7 2700X; 16 GB RAM; GeForce RTX 2060 or Radeon RX 6600 XT; 70 GB on SSD.' },
+      { pt: 'Um patch de 24 de setembro de 2025 adicionou à versão de PC uma recompensa de arte conceitual, com trechos do roteiro, inclusive diálogos cortados.', en: 'A September 24, 2025 patch added a concept art reward to the PC version, featuring parts of the script, including cut dialogue.' }
+    ] },
+    { h: { pt: 'Recepção', en: 'Reception' } },
+    { p: { pt: 'A crítica recebeu o remake de forma mista. Elogiou os gráficos melhorados e o conteúdo extra, e criticou o desempenho e o preço. A história continua sendo o ponto mais elogiado. Houve relatos de travamentos em capítulos específicos e de falhas gerais; muitos bugs foram corrigidos por patches, mas alguns continuam no jogo.',
+           en: 'Critics received the remake in a mixed way. They praised the improved graphics and the extra content, and criticized the performance and the price. The story remains the most praised part. There were reports of soft locks in specific chapters and general crashes; many bugs have been patched, but some remain in the game.' } },
     { h: { pt: 'Como usar o guia', en: 'How to use the guide' } },
     { p: { pt: 'Comece pela aba <strong>Guia</strong> (o roteiro) e consulte <strong>Perdíveis</strong> antes de cada escolha importante. Os <strong>Troféus</strong> têm filtros por tipo e por perdível.',
            en: 'Start with the <strong>Guide</strong> tab (the roadmap) and check <strong>Missables</strong> before each important choice. <strong>Trophies</strong> has filters by type and by missable.' } }
