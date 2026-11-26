@@ -21,6 +21,7 @@ function aplicarImagensSite() {
     const img = document.createElement('img')
     img.className = 'brand-logo'; img.src = url; img.alt = ''; img.setAttribute('aria-hidden', 'true')
     marca.replaceWith(img)
+    document.querySelector('.brand').classList.add('tem-logo')   // a logo já traz o nome SENNIIIN: o texto ao lado é escondido (css/site.css, .brand.tem-logo)
   })
   usarSeExistir(IMAGENS_SITE.wallpaper, url => {
     document.documentElement.style.setProperty('--wallpaper', 'url("' + new URL(url, location.href).href + '")')   // endereço completo: dentro do CSS, um caminho relativo seria lido a partir da pasta css/

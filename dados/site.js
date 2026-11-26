@@ -35,7 +35,7 @@ const SITE = {
 // Quanto a película escura do Wallpaper escurece: veja --wallpaper-pelicula em css/site.css (0 = nada, 1 = preto).
 const IMAGENS_SITE = {
   wallpaper: 'Images/Wallpaper.webp',
-  logo: 'Images/Logo.webp',
+  logo: 'Images/LOGO.webp',
   icon: 'Images/Icon.webp'
 }
 
