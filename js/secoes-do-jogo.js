@@ -227,7 +227,7 @@ function jogoConteudo(g, d, sec) {
   }
   if (sec === 'mapas') {
     return `<div class="sec-head"><div class="jv-cab"><span class="jv-ico" aria-hidden="true">${icoSec('mapas')}</span><div><p class="kicker">${jRot('mapas')}</p><h2 class="h2">${jRot('mapas')}</h2></div></div></div>
-      ${d.mapas.length ? `<div class="jv-lista">${d.mapas.map(m => `<a class="jv-card" href="${esc(m.href)}" style="text-decoration:none;color:inherit"><h3>${esc(L(m.t))}</h3><p>${esc(L(m.d || ''))}</p></a>`).join('')}</div>` : jVazio()}`
+      ${d.mapaInterativo ? `<iframe class="jv-mapa-int" src="${esc(d.mapaInterativo)}" title="${esc(jRot('mapas'))}" loading="lazy" allow="clipboard-write" style="display:block;width:100%;height:min(82dvh,760px);min-height:420px;border:1px solid var(--line);border-radius:var(--r);background:#000"></iframe>` : d.mapas.length ? `<div class="jv-lista">${d.mapas.map(m => `<a class="jv-card" href="${esc(m.href)}" style="text-decoration:none;color:inherit"><h3>${esc(L(m.t))}</h3><p>${esc(L(m.d || ''))}</p></a>`).join('')}</div>` : jVazio()}`
   }
   if (sec === 'jogabilidade') {
     return `${jCab(sec)}${d.jogabilidade.length ? jArtigo(d, 'jogabilidade') : jVazio()}`
