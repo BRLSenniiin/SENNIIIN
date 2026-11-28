@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Mapa Interativo — Grand Theft Auto VI</title>
+<meta name="robots" content="noindex">
+<!-- Esta página é mostrada DENTRO da aba Mapas do guia do GTA VI (um quadro/iframe em gta-vi.html#jogo/gta-vi/mapas). Ela é o sistema 'mapa-base' sem mudanças no motor; só mudou a configuração (NS, CATS, MAPS, POIS), a altura e o 'Saiba mais'. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@500;700;800&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css">
+<style>
+:root{
+/* TEMA: mesmos tokens do css/site.css. --h é o hue do jogo (dados/jogos-lista.js, GTA VI = 330); --ac (destaque) acompanha o hue. */
+--h:330;--bg:#121110;--pn:#1c1916;--pn2:#241f1a;--bd:#2f2a24;--bd2:#433b32;--tx:#f1ebe0;--mu:#8a8073;--dim:#b3a99b;--ac:hsl(var(--h) 80% 62%);--rose:#ff7070;--r:14px;
+--f-display:'Saira Condensed','Segoe UI',system-ui,sans-serif;--f-body:'Instrument Sans','Segoe UI',system-ui,sans-serif;--f-mono:'JetBrains Mono',ui-monospace,Menlo,Consolas,monospace}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--tx);font:14px/1.4 var(--f-body);-webkit-tap-highlight-color:transparent}
+body.lock{overflow:hidden;position:fixed;width:100%}
+button,input,select,textarea{font:inherit;color:inherit}
+button{background:var(--pn2);border:1px solid var(--bd);border-radius:10px;padding:8px 12px;min-height:40px;cursor:pointer;transition:border-color .15s,background .15s}
+button:hover{border-color:var(--bd2)}
+button.on{background:var(--ac);color:#1a0a12;border-color:var(--ac)}
+input,select,textarea{width:100%;background:var(--bg);border:1px solid var(--bd);border-radius:10px;padding:9px 10px;min-height:40px}
+:focus-visible{outline:2px solid var(--ac);outline-offset:2px}
+h1{font-size:18px;margin:0;padding:12px 14px}
+#frame{position:relative;display:flex;flex-direction:column;height:100dvh;background:hsl(var(--h) 22% 7%);overflow:hidden;border:1px solid var(--bd);border-radius:var(--r)}
+#frame.fs{position:fixed;inset:0;height:auto;z-index:50;padding-top:env(safe-area-inset-top);border-radius:0}
+#top{display:flex;gap:8px;align-items:center;padding:8px;background:var(--pn);border-bottom:1px solid var(--bd);position:relative;z-index:6}
+#mapTitle{flex:1;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#msel{position:relative}
+#mselBtn{max-width:52vw;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#mselList{display:none;position:absolute;left:0;top:calc(100% + 4px);width:min(340px,86vw);max-height:60dvh;overflow:auto;background:var(--pn);border:1px solid var(--bd);border-radius:var(--r);z-index:20}
+#msel.open #mselList{display:block}
+.mi{display:flex;gap:10px;padding:10px;cursor:pointer;border-bottom:1px solid var(--bd)}
+.mi.act{background:var(--pn2);box-shadow:inset 3px 0 0 var(--ac)}
+.mi small{display:block;color:var(--mu)}
+.arw{position:sticky;left:0;right:0;text-align:center;background:var(--pn);color:var(--ac);display:none;z-index:2;font-size:11px}
+.arw.up{top:0}.arw.dn{bottom:0}.arw.v{display:block}
+#body{flex:1;display:flex;min-height:0;position:relative}
+#side{width:300px;flex:none;overflow:auto;padding:10px;background:var(--pn);border-right:1px solid var(--bd);display:flex;flex-direction:column;gap:10px}
+#mapWrap{flex:1;position:relative;min-width:0}
+#map{position:absolute;inset:0;touch-action:none}
+.bar{height:8px;background:var(--bg);border:1px solid var(--bd);border-radius:6px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:var(--ac)}
+.row{display:flex;flex-wrap:wrap;gap:6px}
+.row button{flex:1 1 45%}
+#cats{display:grid;grid-template-columns:repeat(auto-fill,minmax(88px,1fr));gap:6px}
+.cat{position:relative;padding:6px 4px;display:flex;flex-direction:column;align-items:center;gap:2px;background:var(--c);border-color:transparent;color:#fff;min-height:54px}
+.cat.off{opacity:.3}
+.cat span{font-size:18px}.cat small{font-size:10px;text-align:center}
+.cat em{position:absolute;top:2px;right:4px;font-size:10px;font-style:normal;opacity:.8}
+#zoom{position:absolute;right:10px;top:10px;display:flex;flex-direction:column;gap:6px;z-index:5;align-items:center}
+#zoom button{width:44px;min-height:44px;padding:0;background:rgba(28,25,22,.92)}
+#zoom b{background:rgba(28,25,22,.92);padding:2px 6px;border-radius:6px;font:500 11px var(--f-mono)}
+#notice,#readout,#fb{position:absolute;z-index:5;left:10px;right:64px;padding:8px 10px;border-radius:10px;background:rgba(28,25,22,.95);border:1px solid var(--bd)}
+#notice{top:10px;display:none}
+#readout{bottom:10px;display:none;gap:10px;align-items:center;right:10px}
+#fb{top:50%;display:none;justify-content:center;transform:translateY(-50%);color:var(--rose)}
+#hnd{display:none}
+.pw{width:34px;height:42px}
+.pin{width:34px;height:34px;background:var(--c);border:2px solid #fff;border-radius:50% 50% 50% 0;transform:rotate(-45deg);display:grid;place-items:center;box-shadow:0 2px 6px #0009;cursor:pointer}
+.pin span{transform:rotate(45deg);font-size:16px;line-height:1}
+.pin img{width:18px;height:18px}
+.pin.done{opacity:.45;filter:grayscale(.6)}
+.pin.pers{border-style:dashed}
+.ov{position:fixed;inset:0;z-index:100;display:none;background:rgba(0,0,0,.55);align-items:center;justify-content:center;padding:12px}
+.ov.on{display:flex}.ov.float{background:transparent;align-items:flex-start;justify-content:flex-start;padding:0}
+.card{background:var(--pn);border:1px solid var(--bd);border-radius:var(--r);width:min(360px,100%);max-height:88dvh;overflow:auto;padding:14px;display:flex;flex-direction:column;gap:10px}
+.card h3{margin:0}
+#pImg{width:100%;max-height:180px;object-fit:cover;border-radius:8px;display:none}
+#pFb{font-size:40px;text-align:center}
+.flash{animation:fl 1.2s 2}
+@keyframes fl{50%{outline:3px solid var(--ac)}}
+#det{padding:14px;display:grid;gap:10px}
+.dc{background:var(--pn);border:1px solid var(--bd);border-radius:var(--r);padding:12px}
+@media(max-width:640px){
+ #side{position:absolute;left:0;right:0;bottom:0;width:auto;max-height:68%;z-index:8;border:0;border-top:1px solid var(--bd);border-radius:14px 14px 0 0;padding-bottom:calc(10px + env(safe-area-inset-bottom));transform:translateY(calc(100% - 46px));transition:transform .25s}
+ #side.open{transform:none}
+ #hnd{display:flex;justify-content:space-between;min-height:36px;margin:-4px 0 0;flex:none}
+ #zoom{top:auto;bottom:62px}
+ #notice,#readout{right:10px}
+ #readout{bottom:62px}
+ .ov{align-items:flex-end;padding:0}.ov.float{align-items:flex-end;background:rgba(0,0,0,.55)}
+ .card{width:100%;border-radius:14px 14px 0 0;padding-bottom:calc(14px + env(safe-area-inset-bottom))}
+ .pin{width:38px;height:38px}.pw{width:38px;height:46px}
+}
+/* tipografia do site: títulos em Saira Condensed, rótulos pequenos em JetBrains Mono */
+#mapTitle,.card h3,.mi b,#mselBtn{font-family:var(--f-display);letter-spacing:.01em}
+#mapTitle{font-size:17px;font-weight:700}
+.card h3{font-size:19px;font-weight:700}
+#pCat,.mi small,#hndTxt,.cat small,.arw{font-family:var(--f-mono);letter-spacing:.06em}
+#pCat{font-size:10.5px;text-transform:uppercase}
+.cat small{font-size:9.5px;text-transform:uppercase}
+.cat{border-radius:10px;border:1px solid rgba(255,255,255,.08)}
+.pin{border-color:#f1ebe0}
+
+/* barra do topo: rótulo, ABAS de mapa e tela cheia */
+#top{gap:10px;padding:10px 12px;background:linear-gradient(180deg,var(--pn2),var(--pn));border-bottom:1px solid var(--bd);box-shadow:0 1px 0 hsl(var(--h) 80% 60% / .28)}
+#top::before{content:'MAPA';font:600 10px var(--f-mono);letter-spacing:.14em;color:var(--ac);padding:5px 9px;border:1px solid hsl(var(--h) 80% 60% / .4);border-radius:7px;background:hsl(var(--h) 80% 60% / .1)}
+#mapTitle{display:none}
+#msel{flex:1;min-width:0}
+#mselBtn{display:none}
+#mselList{display:block;position:static;width:auto;max-height:none;overflow:visible;background:none;border:0;border-radius:0}
+#mselItems{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding:2px}
+#mselItems::-webkit-scrollbar{display:none}
+.arw{display:none!important}
+.mi{flex:none;align-items:center;gap:8px;padding:7px 8px 7px 14px;border:1px solid var(--bd);border-radius:999px;background:var(--pn2);color:var(--dim);white-space:nowrap;transition:border-color .15s,background .15s,color .15s}
+.mi:hover{border-color:var(--bd2);color:var(--tx)}
+.mi.act{background:hsl(var(--h) 80% 60% / .16);border:1px solid hsl(var(--h) 80% 60% / .65);color:var(--tx);box-shadow:none}
+.mi b{font:700 15px var(--f-display);letter-spacing:.01em}
+.mi span{font-size:16px!important}
+.mi small{display:none}
+.mi .mc{font:600 10px var(--f-mono);font-style:normal;padding:3px 7px;border-radius:99px;background:var(--bg);color:var(--mu)}
+.mi.act .mc{background:var(--ac);color:#1a0a12}
+#fsBtn{border-radius:999px;padding:8px 14px;font:600 11px var(--f-mono);letter-spacing:.08em;text-transform:uppercase}
+.ov{backdrop-filter:blur(3px)}
+
+
+/* ══════════ UI/UX v3: painel flutuante, abas, grupos, pins em emblema ══════════ */
+.ic{width:1.15em;height:1.15em;object-fit:contain;vertical-align:-.2em}
+#body{position:relative;display:block}
+#mapWrap{position:absolute;inset:0}
+#side{position:absolute;left:12px;top:12px;bottom:12px;width:348px;z-index:8;display:flex;flex-direction:column;gap:0;padding:0;overflow:hidden;background:color-mix(in srgb,var(--pn) 95%,transparent);backdrop-filter:blur(10px);border:1px solid var(--bd2);border-radius:20px;box-shadow:0 18px 50px #000b}
+.phead{display:flex;align-items:center;justify-content:space-between;padding:10px 12px 10px 16px;border-bottom:1px solid var(--bd)}
+.ptag{font:600 10px var(--f-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--dim)}
+#panelMin{min-height:30px;width:30px;padding:0;border-radius:9px;line-height:1;font-size:16px}
+.ptabs{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;margin:12px 14px 0;padding:4px;background:var(--bg);border:1px solid var(--bd);border-radius:12px;flex:none}
+.ptabs button{border:0;background:transparent;min-height:34px;padding:4px 6px;font:600 12px var(--f-body);color:var(--dim);border-radius:9px}
+.ptabs button:hover{color:var(--tx)}
+.ptabs button.on{background:var(--pn2);color:var(--tx);box-shadow:inset 0 -2px 0 var(--ac)}
+.pbody{flex:1;min-height:0;overflow:auto;padding:14px;scrollbar-width:thin;scrollbar-color:var(--bd2) transparent}
+.tab{display:none;flex-direction:column;gap:12px}.tab.on{display:flex}
+#pTituloMapa{margin:0;font:800 25px/1.05 var(--f-display);letter-spacing:.02em;text-transform:uppercase;color:#f6e6b0}
+.allrow{display:flex;align-items:baseline;justify-content:space-between;gap:8px}
+.allrow .h{font:700 15px var(--f-display);letter-spacing:.02em;color:var(--tx)}
+.acts{display:flex;gap:2px}
+button.mini{background:none;border:0;min-height:0;padding:3px 5px;font:600 10px var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--mu);border-radius:6px}
+button.mini:hover{color:var(--tx);background:var(--pn2)}
+.prog{display:flex;justify-content:space-between;align-items:baseline;color:var(--dim)}
+#progCount{font:700 18px var(--f-display);color:var(--tx)}
+.bar{height:8px;margin-top:-6px}
+.bar i{background:linear-gradient(90deg,hsl(var(--h) 80% 48%),hsl(calc(var(--h) + 30) 90% 66%));transition:width .3s}
+.stats{display:flex;gap:8px}
+.stats>*{flex:1;display:flex;gap:8px;align-items:baseline;justify-content:center;min-height:38px;padding:8px 10px;border:1px solid var(--bd);border-radius:10px;background:var(--bg);font:600 11px var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--dim);align-items:center}
+.stats b{font:700 17px var(--f-display);letter-spacing:0;color:var(--tx)}
+.stats button.on{background:var(--ac);border-color:var(--ac);color:#1a0a12}.stats button.on b{color:#1a0a12}
+#search{background:var(--bg);padding:10px 14px;border-radius:99px}
+#search:focus{border-color:var(--ac);outline:none;box-shadow:0 0 0 3px hsl(var(--h) 80% 60% / .18)}
+/* grupos de categorias */
+#cats{display:block!important;grid-template-columns:none!important;padding:0;gap:0}
+.allrow .h{white-space:nowrap}
+.acts button.mini{white-space:nowrap}
+.allrow .h{font-size:14px}.acts button.mini,.ga button.mini{font-size:9px;letter-spacing:.06em;padding:3px 4px}.gt{letter-spacing:.04em;font-size:12px}
+.grp{border-top:1px solid var(--bd);padding-top:6px}
+.gh{display:flex;align-items:center;justify-content:space-between;gap:6px}
+.gt{flex:1;min-width:0;display:flex;align-items:center;gap:8px;border:0;background:none;min-height:34px;padding:0;text-align:left;font:700 13px/1.1 var(--f-display);letter-spacing:.07em;text-transform:uppercase;color:#f2c55c}
+.gt span{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.gt .car{font-style:normal;color:var(--mu);transition:transform .2s;transform:rotate(-90deg);flex:none}
+.grp.open .gt .car{transform:none}
+.gt em{font:600 10px var(--f-mono);font-style:normal;color:var(--mu);background:var(--bg);border:1px solid var(--bd);padding:1px 7px;border-radius:99px;flex:none}
+.ga{display:flex;flex:none}
+.gb{display:none;grid-template-columns:1fr 1fr;gap:2px 8px;padding:4px 0 6px}
+.grp.open .gb{display:grid}
+.ci{display:flex;align-items:center;gap:8px;min-height:36px;padding:3px 6px 3px 4px;border:0;background:none;border-radius:9px;text-align:left;min-width:0}
+.ci:hover{background:var(--pn2)}
+.ci .ico,.ck .ico{flex:none;display:grid;place-items:center;width:26px;height:26px;border-radius:8px;background:var(--c);border:2px solid #17131d;color:#17131d;font-size:14px;line-height:1}
+.ci .ico .ic,.ck .ico .ic{width:18px;height:18px}
+.ci b{flex:1;min-width:0;font:600 10.5px/1.2 var(--f-mono);letter-spacing:.03em;text-transform:uppercase;color:var(--tx);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.ci em{flex:none;font:600 11px var(--f-mono);font-style:normal;color:var(--mu)}
+.ci.zero{opacity:.55}.ci.off{opacity:.4}.ci.off b{text-decoration:line-through}
+/* checklist / meus pins */
+.vazio{margin:0;color:var(--mu);font-size:13px;line-height:1.5}
+.cl-h{margin:8px 0 2px;font:700 12px var(--f-display);letter-spacing:.07em;text-transform:uppercase;color:#f2c55c}
+.ck{display:flex;align-items:center;gap:8px;padding:2px 4px;border-radius:9px}
+.ck:hover{background:var(--pn2)}
+.ck input{width:20px;min-height:20px;flex:none;accent-color:hsl(var(--h) 80% 60%)}
+.ck .go{flex:1;min-width:0;display:flex;align-items:center;gap:8px;min-height:36px;padding:2px 4px;border:0;background:none;text-align:left;font-size:13px;color:var(--tx)}
+.ck .go span:last-child{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pfoot{flex:none;display:flex;gap:8px;padding:10px 14px 14px;border-top:1px solid var(--bd);background:var(--pn)}
+.pfoot button{flex:1;min-height:42px;font-size:13px;padding:8px 6px}
+#side.min{bottom:auto}
+#side.min .ptabs,#side.min .pbody,#side.min .pfoot{display:none}
+#side.min .phead{border-bottom:0}
+/* mapa */
+#mapWrap::after{content:'';position:absolute;inset:0;pointer-events:none;box-shadow:inset 0 0 90px #0008;z-index:1}
+#zoom{gap:0;background:rgba(28,25,22,.92);border:1px solid var(--bd);border-radius:12px;overflow:hidden;backdrop-filter:blur(6px)}
+#zoom button{background:transparent;border:0;border-radius:0;width:44px}
+#zoom button:hover{background:var(--pn2)}
+#zoom b{width:100%;text-align:center;padding:4px 0;background:none;border-top:1px solid var(--bd);border-bottom:1px solid var(--bd);border-radius:0}
+#zRst{border-top:1px solid var(--bd)!important}
+#notice,#readout{border-left:3px solid var(--ac);box-shadow:0 6px 20px #0007;left:372px}
+#rdTxt{font:600 14px var(--f-mono);color:var(--ac)}
+/* pins em EMBLEMA: quadrado arredondado, fundo pastel do grupo, contorno escuro e anel claro */
+.pw{width:38px;height:38px}
+.pin{position:relative;width:100%;height:100%;border-radius:12px;transform:none;background:var(--c);border:2.5px solid #17131d;box-shadow:0 0 0 2px rgba(255,250,240,.9),0 6px 12px #000a;transition:transform .15s}
+.pin span{transform:none;font-size:18px;color:#17131d}
+.pin img,.pin .ic{width:24px;height:24px}
+.pw:hover .pin{transform:scale(1.14)}
+.pin.done{opacity:.7}
+.pin.done::after{content:'✓';position:absolute;right:-9px;top:-9px;width:18px;height:18px;border-radius:50%;background:#3fb37f;border:2px solid #121110;color:#fff;font:700 10px/14px sans-serif;text-align:center}
+/* popup do pin */
+.card{box-shadow:0 22px 50px #000b;border-top:3px solid var(--c,var(--ac))}
+#pTitle{display:flex;align-items:center;gap:8px;font-size:20px}
+#pCat{align-self:flex-start;padding:3px 9px;border-radius:99px;background:color-mix(in srgb,var(--c,var(--ac)) 30%,transparent);color:var(--tx)!important;font-size:10px}
+#pImg{border:1px solid var(--bd)}
+#pFb{font-size:34px;padding:16px;border-radius:12px;background:color-mix(in srgb,var(--c,var(--ac)) 24%,var(--bg))}
+#pDesc{color:var(--dim);line-height:1.5}
+#pCheckWrap{padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--bg);cursor:pointer}
+#pCheck{accent-color:hsl(var(--h) 80% 60%)}
+#pJump{background:var(--ac);color:#1a0a12;border-color:var(--ac);font-weight:600}
+#pDel{color:var(--rose)}
+#expBtn{width:100%}
+
+/* celular / tela estreita: o painel vira gaveta embaixo */
+@media(max-width:640px){
+ #top::before{display:none}
+ #notice,#readout{left:10px}
+ #side{left:0;right:0;top:auto;bottom:0;width:auto;max-height:74%;border-width:1px 0 0;border-radius:20px 20px 0 0;box-shadow:0 -14px 34px #000a;transform:translateY(calc(100% - 46px));transition:transform .25s}
+ #side.open{transform:none}
+ #side.min{bottom:0}
+ .phead{display:none}
+ #hnd{position:relative;min-height:46px;padding-top:16px;margin:0;background:transparent;border:0;align-items:center;flex:none}
+ #hnd::before{content:'';position:absolute;top:6px;left:50%;width:44px;height:4px;margin-left:-22px;border-radius:4px;background:var(--bd2)}
+ #hndTxt{font:600 11px var(--f-mono);letter-spacing:.1em}
+ #hndBadge{background:var(--ac);color:#1a0a12;border-radius:99px;padding:2px 9px;font:700 11px var(--f-mono)}
+ .ptabs{margin-top:0}
+ .pw{width:40px;height:40px}
+}
+@media(max-width:480px){ #fsBtn{font-size:0;padding:8px 12px} #fsBtn::before{content:'⛶';font-size:16px} #frame.fs #fsBtn::before{content:'✕'} }
+</style>
+</head>
+<body>
+<div id="frame">
+ <div id="top">
+  <div id="msel">
+   <button id="mselBtn" type="button"><span id="mselIcon">🗺️</span> <span id="mselName">Mapa</span> ▾</button>
+   <div id="mselList"><div class="arw up" id="arwUp">▲</div><div id="mselItems"></div><div class="arw dn" id="arwDn">▼</div></div>
+  </div>
+  <div id="mapTitle"></div>
+  <button id="fsBtn" type="button">⛶ Tela Cheia</button>
+ </div>
+ <div id="body">
+  <aside id="side">
+   <button id="hnd" type="button"><span id="hndTxt">▲ FILTROS E FERRAMENTAS</span><span id="hndBadge">0/0</span></button>
+   <div class="phead"><span class="ptag">GTA VI · Guia do mapa</span><button id="panelMin" type="button" aria-label="Minimizar painel" title="Minimizar painel">–</button></div>
+   <div class="ptabs" role="tablist"><button type="button" class="on" data-tab="marc">Marcadores</button><button type="button" data-tab="check">Checklist</button><button type="button" data-tab="meus">Meus pins</button></div>
+   <div class="pbody">
+    <div class="tab on" id="tab-marc">
+     <h2 id="pTituloMapa">Mapa</h2>
+     <input id="search" type="search" placeholder="🔎 Buscar pin pelo nome" autocomplete="off">
+     <div class="allrow"><span class="h">Todos os marcadores</span><span class="acts"><button id="btnShowAll" type="button" class="mini">Mostrar</button><button id="hideBtn" type="button" class="mini">👁 Ocultar Todos</button></span></div>
+     <div class="prog"><span>Encontrados</span><span id="progCount">0 / 0</span></div>
+     <div class="bar"><i id="progFill"></i></div>
+     <div class="stats"><span id="stDone"><b>0</b> Completos</span><button id="pendBtn" type="button"><b>0</b> Pendentes</button></div>
+     <div id="cats"></div>
+    </div>
+    <div class="tab" id="tab-check"><p class="vazio">Marque aqui o que você já encontrou. Toque no nome para ir até o pin.</p><div id="checkList"></div></div>
+    <div class="tab" id="tab-meus"><p class="vazio">Pins pessoais ficam só neste navegador. Use “Novo Pin” e toque no mapa.</p><div id="meusList"></div><button id="expBtn" type="button">⬇ Exportar Pins</button></div>
+   </div>
+   <div class="pfoot"><button id="addBtn" type="button">📌 Novo Pin</button><button id="calBtn" type="button">🎯 Modo Calibração</button></div>
+  </aside>
+  <div id="mapWrap">
+   <div id="map"></div>
+   <div id="notice"></div>
+   <div id="fb"><span id="fbTxt"></span></div>
+   <div id="readout"><span id="rdTxt"></span><button id="rdCopy" type="button">copiar</button></div>
+   <div id="zoom"><button id="zIn" type="button" aria-label="Aproximar">＋</button><b id="zLvl">100%</b><button id="zOut" type="button" aria-label="Afastar">－</button><button id="zRst" type="button" aria-label="Enquadrar">⟲</button></div>
+  </div>
+ </div>
+</div>
+
+<div class="ov" id="pop"><div class="card" id="popc">
+ <h3 id="pTitle"></h3><small id="pCat" style="color:var(--mu)"></small>
+ <div id="pHolo"><img id="pImg" alt=""><div id="pFb"></div></div>
+ <div id="pDesc"></div>
+ <label id="pCheckWrap" style="display:flex;gap:8px;align-items:center"><input id="pCheck" type="checkbox" style="width:22px;min-height:22px"> Já encontrei</label>
+ <div class="row"><button id="pJump" type="button">Saiba mais</button><button id="pEdit" type="button">✏️ Editar</button><button id="pDel" type="button">🗑 Remover</button><button id="pClose" type="button">Fechar</button></div>
+</div></div>
+
+<div class="ov" id="pinModal"><div class="card">
+ <h3 id="pmTitle">📌 NOVO PIN PESSOAL</h3>
+ <input id="pmName" placeholder="Título do pin">
+ <select id="pmCat"></select>
+ <input id="pmLoc" placeholder="Localização (opcional)">
+ <textarea id="pmDesc" rows="3" placeholder="Anotação (opcional)"></textarea>
+ <div class="row"><button id="pmSave" type="button" class="on">Salvar Pin</button><button id="pmCancel" type="button">Cancelar</button></div>
+</div></div>
+
+<div class="ov" id="expModal"><div class="card">
+ <h3>⬇ Pins pessoais (JSON)</h3>
+ <textarea id="expTa" rows="10" readonly></textarea>
+ <div class="row"><button id="expCopy" type="button">Copiar</button><button id="expClose" type="button">Fechar</button></div>
+</div></div>
+
+<script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
+<script>
+// ══════════════════════════════════════════════════════════════════
+// CONFIGURAÇÃO — o que você mais vai editar fica aqui em cima.
+// ══════════════════════════════════════════════════════════════════
+const NS = 'gtaVI_mapa_'; // prefixo do localStorage (progresso e pins pessoais). Um prefixo por jogo, para os mapas não se misturarem.
+
+// ICONES: cada categoria procura o ícone em  PASTA + nome-da-categoria + EXT_ICONE  (ex.: Images/MAPAS/GTA VI/atm.webp).
+// O nome do arquivo é o nome da categoria em inglês, minúsculo e com hífens (a lista completa está no ICONES.txt).
+// Se o arquivo não existir, aparece o emoji reserva da categoria. Para usar só emojis: ICONES_EM_ARQUIVO = false.
+const PASTA = 'Images/MAPAS/GTA VI/';
+const EXT_ICONE = '.webp';          // se o seu pacote de ícones for .png ou .svg, troque aqui
+const ICONES_EM_ARQUIVO = true;
+
+// Categorias em GRUPOS. Cada item é [nome-do-arquivo, rótulo mostrado, emoji reserva]. A cor é do grupo (c).
+const GRUPOS = [
+  { id:'poi', l:'Pontos de interesse', c:'hsl(225 70% 80%)', itens:[['atm','ATM','🏧'], ['gym','Academia','🏋️'], ['club','Clube','🪩'], ['ammu-nation','Ammu-Nation','🔫']] },
+  { id:'robberies', l:'Roubos', c:'hsl(140 45% 72%)', itens:[['bank','Banco','🏦'], ['big-bank','Banco grande','💰'], ['payday-loans','Payday Loans','💵'], ['low-end-jewelry-store','Joalheria simples','💍'], ['high-end-jewelry-store','Joalheria de luxo','💎'], ['pawn-shop','Casa de penhores','🪙'], ['atm-towable','ATM (rebocável)','🏧'], ['convenience-store','Loja de conveniência','🏪'], ['fast-food','Fast food','🍔'], ['liquor-store','Loja de bebidas','🍾'], ['contact','Contato','📇'], ['safe','Cofre','🔐'], ['kitty-litter-lab','Kitty Litter Lab','🧪']] },
+  { id:'vehicles', l:'Veículos', c:'hsl(200 65% 80%)', itens:[['pay-n-spray','Pay \'N\' Spray','🎨'], ['mod-shop','Oficina de mods','🔧'], ['gas-station','Posto de gasolina','⛽'], ['car-wash','Lava-rápido','🚿'], ['electric-charger','Carregador elétrico','🔌'], ['bus-stop','Ponto de ônibus','🚌'], ['train-station','Estação de trem','🚆'], ['ferry-terminal','Terminal de balsa','⛴️'], ['rental-vehicle','Veículo de aluguel','🔑'], ['purchasable-garage','Garagem à venda','🏷️'], ['garage','Garagem','🅿️'], ['standout-vehicle','Veículo de destaque','⭐'], ['randy-vehicle','Veículo do Randy','🚗'], ['moses-vehicle','Veículo do Moses','🚙'], ['wymans-untowables','Wyman\'s Untowables','🚘']] },
+  { id:'style', l:'Estilo', c:'hsl(10 75% 86%)', itens:[['casual-and-street','Casual e street','👕'], ['sportswear','Esportivo','🎽'], ['formal','Formal','👔'], ['souvenir-and-swimwear','Souvenir e praia','🩳'], ['thrift','Brechó','🧥'], ['footwear','Calçados','👟'], ['hair-and-beauty','Cabelo e beleza','✂️'], ['tattoos','Tatuagens','🖋️'], ['electronics','Eletrônicos','🎧'], ['unique-style','Estilo único','✨'], ['unique-look','Visual único','🕶️'], ['watch','Relógio','⌚']] },
+  { id:'food', l:'Comida e bebida', c:'hsl(215 55% 88%)', itens:[['cafes-and-takeout','Cafés e delivery','☕'], ['bar','Bar','🍸'], ['street-food','Comida de rua','🌭']] },
+  { id:'exploration', l:'Exploração', c:'hsl(45 90% 70%)', itens:[['underwater-discoveries','Descobertas submarinas','🤿'], ['meteorite','Meteorito','☄️'], ['book-swap','Troca de livros','📚'], ['unique-weapon-variant','Variante de arma única','🔫'], ['cocaine-flamingo','Cocaine Flamingo','🦩'], ['magazine','Revista','📰'], ['unique-playlist','Playlist única','🎵'], ['1010-mural','Mural 1010','🖼️']] },
+  { id:'kenton', l:'Tesouros do Kenton', c:'hsl(48 92% 66%)', itens:[['gold-doubloon','Dobrão de ouro','🪙'], ['shipwreck','Naufrágio','🚢'], ['kentons-treasure','Tesouro do Kenton','🏴‍☠️']] },
+  { id:'cards', l:'Cartas colecionáveis', c:'hsl(38 88% 70%)', itens:[['los-santos-corkers','Los Santos Corkers','🃏'], ['vice-city-flamingos','Vice City Flamingos','🃏'], ['liberty-city-swingers','Liberty City Swingers','🃏'], ['vice-city-narcos','Vice City Narcos','🃏'], ['los-santos-panic','Los Santos Panic','🃏'], ['liberty-city-penetrators','Liberty City Penetrators','🃏'], ['vice-city-manatees','Vice City Manatees','🃏'], ['los-santos-pounders','Los Santos Pounders','🃏'], ['liberty-city-wrath','Liberty City Wrath','🃏'], ['vice-city-club-de-futbol','Vice City Club de Futbol','🃏'], ['bam-backyard-wrestling','B.A.M. Backyard Wrestling','🃏'], ['americas-next-top-hooker','America\'s Next Top Hooker','🃏'], ['jack-of-hearts','Jack of Hearts','🃏'], ['delights','Delights','🃏'], ['nine1nine','Nine1Nine','🃏'], ['right-wing-americas-hero','Right Wing: America\'s Hero','🃏'], ['ed-universe','Ed Universe','🃏'], ['legends-of-ratface','Legends of Ratface','🃏']] },
+  { id:'waink', l:'Locais WAiNK', c:'hsl(170 55% 72%)', itens:[['landmark','Ponto turístico','🗽'], ['curiosity','Curiosidade','🔍'], ['sculpture','Escultura','🗿'], ['peewee-billboard','Outdoor Peewee','🪧'], ['noflusher-tag','Pichação NoFlusher','🖌️']] },
+  { id:'ahol', l:'Arte de rua AHOL: Geografias do Lixo', c:'hsl(285 50% 82%)', itens:[['armchair','Poltrona','🛋️'], ['bucket','Balde','🪣'], ['chair','Cadeira','🪑'], ['cone','Cone','🚧'], ['container','Contêiner','📦'], ['fridge','Geladeira','🧊'], ['mattress','Colchão','🛏️'], ['pallet','Palete','🪵'], ['tire','Pneu','🛞'], ['tv','TV','📺'], ['wheel','Roda','⚙️']] },
+  { id:'sports', l:'Esportes', c:'hsl(250 60% 84%)', itens:[['basketball-hoop','Cesta de basquete','🏀'], ['golf-course','Campo de golfe','⛳'], ['mini-golf-course','Mini golfe','🏌️'], ['pool-table','Mesa de sinuca','🎱'], ['meditation-spot','Ponto de meditação','🧘']] },
+  { id:'activities', l:'Atividades', c:'hsl(270 55% 80%)', itens:[['shooting-range','Estande de tiro','🎯'], ['arcade-machine','Fliperama','🕹️'], ['fishing-hotspot','Ponto de pesca','🎣']] },
+  { id:'stunts', l:'Acrobacias', c:'hsl(205 70% 82%)', itens:[['stunt-jump','Salto de acrobacia','🏍️'], ['base-jump','Base jump','🪂'], ['knife-flight','Knife flight','✈️'], ['under-the-bridge','Under the bridge','🌉']] },
+  { id:'racing', l:'Corridas', c:'hsl(222 78% 82%)', itens:[['racing-introduction','Introdução às corridas','🏁'], ['racing-challenge','Desafio de corrida','🏆'], ['thrillbilly-mud-club','Thrillbilly Mud Club','🚜'], ['animal-crackers','Animal Crackers','🐾'], ['hit-n-run-vc','Hit \'n\' Run VC','💥'], ['hamlet-boone-speedway','Hamlet Boone Speedway','🏎️'], ['ambrosia-raceway','Ambrosia Raceway','🏎️'], ['gellhorn-raceway','Gellhorn Raceway','🏎️'], ['top-fun-drones','Top Fun Drones','🚁']] },
+  { id:'illegal', l:'Operações ilegais', c:'hsl(35 92% 64%)', itens:[['kingfishers','Kingfishers','🐊'], ['kolt-and-associates','Kolt & Associates','💼'], ['m7','M7','🔺'], ['la-polilla-negra','La Polilla Negra','🦋'], ['final-chapter','Final Chapter','☠️'], ['san4san','San4San','🐍'], ['ptt-youngins','PTT Youngin$','💸'], ['the-guardia-brothers','The Guardia Brothers','🐓'], ['criminals','Criminals','🎭']] },
+  { id:'guia', l:'Meu guia', c:'hsl(330 75% 74%)', itens:[['missions','Missões','🎯'], ['npcs','NPCs','🧑'], ['info','Informações','ℹ️'], ['attention','Ponto de atenção','⚠️'], ['collectibles','Colecionáveis','⭐']] }
+];
+
+// A partir dos grupos o sistema monta o CATS (chave = nome-do-arquivo; é o que o pin usa no campo cat). Não precisa editar.
+const CATS = {};
+const iconeHTML = (k, e) => ICONES_EM_ARQUIVO
+  ? '<img class="ic" alt="" src="' + encodeURI(PASTA + k + EXT_ICONE) + '" onerror="this.replaceWith(document.createTextNode(\'' + e + '\'))">' : e;
+GRUPOS.forEach(g => g.itens.forEach(([k, l, e]) => { CATS[k] = { l, e, c:g.c, g:g.id, i:iconeHTML(k, e) }; }));
+const PESS = {l:'Pins Pessoais', i:'📌', c:'#555b6e'}; // categoria genérica dos pins pessoais
+
+// Mapas. Cada um usa UM de três modos (nesta ordem de prioridade):
+//  1) tiles: {url,bounds,minzoom,maxzoom,tileSize} → tileset do MapTiler Engine (bounds = [oeste,sul,leste,norte])
+//  2) img: 'caminho.webp' → imagem única (só baixada neste modo, para ler as dimensões)
+//  3) demo → imagem de grade gerada na hora (só para testar sem arquivos)
+// Exemplo de tiles (8192x8192, mesma escala dos outros mapas): bounds [0,-0.66005,0.66005,0]
+// MAPA DE EXEMPLO: troque a linha demo pela imagem/tiles do mapa real de Leonida (descomente uma das linhas abaixo e apague o demo).
+// O primeiro mapa precisa ter id 'geral' (é o que o sistema abre ao carregar). Para mais mapas (ex.: uma cidade), copie o bloco, mude o id; os pins usam esse id em mapId.
+const MAPS = [
+  { id:'geral', name:'Exemplo: Mapa de Leonida', icon:'🗺️', desc:'Troque pelo mapa real (hoje é uma grade de teste).', demo:{w:1600,h:900,label:'LEONIDA'}
+    /* , img:'Images/MAPAS/GTA VI/leonida.webp' */
+    /* , tiles:{ url:'Images/MAPAS/GTA VI/LEONIDA/{z}/{x}/{y}.webp', bounds:[0,-0.1740373,0.30940011,0], minzoom:10, maxzoom:14, tileSize:256 } */ },
+];
+
+// Pasta das imagens dos pins: no pin escreva só achado:'nome-do-arquivo' (a extensão .webp entra sozinha).
+const ACHADOS_DIR = PASTA + 'ACHADOS/';
+
+// PINS oficiais. Campos: id (único), cat (chave de CATS), mapId, pt {x,y} em % da imagem (0–100),
+// name, desc, img (caminho completo) OU achado (nome do arquivo), jump (opcional, ver jump()).
+// Pegue x/y com o "🎯 Modo Calibração". Um pin = um objeto.
+const POIS = [
+  { id:'missions-0', cat:'missions', mapId:'geral', pt:{x:25,y:30}, name:'Exemplo: Missão', desc:'Troque pelo pin real. Pegue x/y com o 🎯 Modo Calibração.' },
+  { id:'meditation-spot-0', cat:'meditation-spot', mapId:'geral', pt:{x:60,y:45}, name:'Exemplo: Ponto de meditação', desc:'Texto do popup.' },
+  { id:'ammu-nation-0', cat:'ammu-nation', mapId:'geral', pt:{x:40,y:70}, name:'Exemplo: Ammu-Nation', desc:'Para ligar uma imagem, acrescente achado:\'nome-do-arquivo\' (pasta Images/MAPAS/GTA VI/ACHADOS/).' },
+  { id:'atm-0', cat:'atm', mapId:'geral', pt:{x:72,y:28}, name:'Exemplo: ATM', desc:'Texto do popup.' },
+];
+
+// ══════════════════════════════════════════════════════════════════
+// MOTOR
+// ══════════════════════════════════════════════════════════════════
+const $ = id => document.getElementById(id);
+const jl = (k,d) => { try { return JSON.parse(localStorage.getItem(NS+k)) || d; } catch(e) { return d; } };
+const js_ = (k,v) => { try { localStorage.setItem(NS+k, JSON.stringify(v)); } catch(e) {} };
+let prog = jl('progresso',{}), pers = jl('pinsPessoais',[]);
+const achadoUrl = n => n ? ACHADOS_DIR + (/\.webp$/i.test(n) ? n : n + '.webp') : '';
+const POI = POIS.map(p => (p.achado && !p.img) ? Object.assign({}, p, {img:achadoUrl(p.achado)}) : p);
+const S = { id:'geral', hidden:new Set(), pend:false, allHidden:false, add:false, calib:false, fs:false, editId:null, tmp:null, cur:null };
+let map = null, B = {west:0,south:-1,east:1,north:0}, z0 = 0, ents = [], tok = 0, calMk = null, fsY = 0, deb;
+const H0 = 0.1740373; // altura padrão (graus) para mapas de imagem única
+const imgBounds = a => [0, -H0, H0*a, 0];
+// UI: no PC o painel flutua à esquerda; o enquadramento reserva essa faixa (a menos que o painel esteja minimizado).
+const fitPad = () => (!matchMedia('(max-width:640px)').matches && !$('side').classList.contains('min')) ? {top:16, right:16, bottom:16, left:372} : 16;
+const catInfo = k => k === 'pessoal' ? PESS : CATS[k];
+
+// % da imagem <-> lng/lat (Y da imagem cresce pra baixo, lat pra cima)
+const pctToLL = pt => [B.west + pt.x/100*(B.east-B.west), B.north - pt.y/100*(B.north-B.south)];
+const llToPct = ll => ({
+  x: Math.max(0,Math.min(100,(ll.lng-B.west)/(B.east-B.west)*100)).toFixed(1),
+  y: Math.max(0,Math.min(100,(B.north-ll.lat)/(B.north-B.south)*100)).toFixed(1),
+});
+
+function poisFor(mapId) {
+  const pp = pers.filter(p => p.mapId === mapId).map(p => ({id:p.id,cat:p.cat||'pessoal',mapId:p.mapId,pt:{x:p.x,y:p.y},name:p.name,note:p.note,location:p.location,personal:true}));
+  return POI.filter(p => p.mapId === mapId).concat(pp);
+}
+const iconOf = p => (catInfo(p.cat) || {i:'📍'}).i;
+const colorOf = p => (catInfo(p.cat) || {c:'#008c2a'}).c;
+
+// ── Imagem de demonstração (grade) ──
+function demoImg(w,h,label) {
+  const c = document.createElement('canvas'); c.width = w; c.height = h;
+  const x = c.getContext('2d'); x.fillStyle = 'hsl(330,18%,12%)'; x.fillRect(0,0,w,h);
+  x.strokeStyle = 'hsl(330,14%,21%)'; x.lineWidth = 2; const s = w/20;
+  for (let i = 0; i <= w; i += s) { x.beginPath(); x.moveTo(i,0); x.lineTo(i,h); x.stroke(); }
+  for (let j = 0; j <= h; j += s) { x.beginPath(); x.moveTo(0,j); x.lineTo(w,j); x.stroke(); }
+  x.fillStyle = 'hsl(330,20%,30%)'; x.font = 'bold ' + h/6 + 'px sans-serif'; x.textAlign = 'center'; x.textBaseline = 'middle'; x.fillText(label, w/2, h/2);
+  x.strokeStyle = 'hsl(330,80%,62%)'; x.lineWidth = 6; x.strokeRect(3,3,w-6,h-6);
+  return c.toDataURL('image/png');
+}
+
+// ── Carregar / montar mapa ──
+function loadMap(id) {
+  S.id = id; const cfg = MAPS.find(m => m.id === id); S.cur = cfg; const t = ++tok;
+  $('mapTitle').textContent = cfg.name; $('fb').style.display = 'none';
+  $('mselIcon').textContent = cfg.icon; $('mselName').textContent = cfg.name;
+  renderMapList(); closePop();
+  if (cfg.tiles) return mount(cfg, cfg.tiles.bounds, null);
+  if (cfg.img) {
+    const im = new Image();
+    im.onload = () => { if (t === tok) mount(cfg, imgBounds(im.naturalWidth/im.naturalHeight), cfg.img); };
+    im.onerror = () => { if (t !== tok) return; $('fb').style.display = 'flex'; $('fbTxt').textContent = cfg.img + ' não encontrada ainda'; mount(cfg, imgBounds(1), null); };
+    im.src = cfg.img; return;
+  }
+  if (cfg.demo) return mount(cfg, imgBounds(cfg.demo.w/cfg.demo.h), demoImg(cfg.demo.w, cfg.demo.h, cfg.demo.label));
+  mount(cfg, imgBounds(1), null);
+}
+function mount(cfg, b, url) {
+  if (map.getLayer('lay')) map.removeLayer('lay');
+  if (map.getSource('src')) map.removeSource('src');
+  B = {west:b[0], south:b[1], east:b[2], north:b[3]};
+  if (cfg.tiles) { const t = cfg.tiles; map.addSource('src', {type:'raster', tiles:[t.url], tileSize:t.tileSize||256, bounds:b, minzoom:t.minzoom, maxzoom:t.maxzoom}); }
+  else if (url) map.addSource('src', {type:'image', url, coordinates:[[b[0],b[3]],[b[2],b[3]],[b[2],b[1]],[b[0],b[1]]]});
+  if (map.getSource('src')) map.addLayer({id:'lay', type:'raster', source:'src', paint:{'raster-fade-duration':0}});
+  fit(); renderPins(); renderCats();
+}
+// Enquadra a imagem e trava zoom/pan a partir do enquadramento REAL da tela (funciona em retrato e paisagem).
+function fit() {
+  map.setMaxBounds(null); map.setMinZoom(0); map.setMaxZoom(24);
+  map.fitBounds([[B.west,B.south],[B.east,B.north]], {padding:fitPad(), animate:false});
+  z0 = map.getZoom(); map.setMinZoom(z0-2); map.setMaxZoom(z0+5);
+  const f = map.getBounds(), w = f.getEast()-f.getWest(), h = f.getNorth()-f.getSouth();
+  map.setMaxBounds([[f.getWest()-w*.8, f.getSouth()-h*.8],[f.getEast()+w*.8, f.getNorth()+h*.8]]);
+  zl();
+}
+function zl() { if (map) $('zLvl').textContent = Math.round(Math.pow(2, map.getZoom()-z0)*100) + '%'; }
+
+// ── Seletor de mapa ──
+function renderMapList() {
+  const box = $('mselItems'); box.innerHTML = '';
+  MAPS.forEach(m => {
+    const d = document.createElement('div'); d.className = 'mi' + (m.id === S.id ? ' act' : '');
+    d.innerHTML = '<span style="font-size:20px"></span><div><b></b><small></small></div>';
+    d.children[0].textContent = m.icon; d.querySelector('b').textContent = m.name; d.querySelector('small').textContent = m.desc || '';
+    d.title = m.desc || m.name; const mc = document.createElement('em'); mc.className = 'mc'; mc.textContent = POI.filter(p => p.mapId === m.id).length; d.appendChild(mc); // UI: dica e contador de pins na aba
+    d.onclick = () => { $('msel').classList.remove('open'); if (m.id !== S.id) loadMap(m.id); };
+    box.appendChild(d);
+  });
+  arrows();
+}
+function arrows() { const l = $('mselList'); $('arwUp').classList.toggle('v', l.scrollTop > 2); $('arwDn').classList.toggle('v', l.scrollTop < l.scrollHeight-l.clientHeight-2); }
+$('mselList').addEventListener('scroll', arrows);
+$('mselBtn').onclick = e => { e.stopPropagation(); $('msel').classList.toggle('open'); arrows(); };
+document.addEventListener('click', e => { if (!$('msel').contains(e.target)) $('msel').classList.remove('open'); });
+
+// ── Pins ──
+function pinHTML(p) {
+  const done = !p.personal && prog[p.id];
+  return '<div class="pin' + (done?' done':'') + (p.personal?' pers':'') + '" style="--c:' + colorOf(p) + '"><span>' + iconOf(p) + '</span></div>';
+}
+function renderPins() {
+  if (!map) return;
+  ents.forEach(e => e.marker.remove()); ents = [];
+  poisFor(S.id).forEach(p => {
+    const el = document.createElement('div'); el.className = 'pw'; el.title = p.name; el.innerHTML = pinHTML(p);
+    el.addEventListener('click', e => { e.stopPropagation(); openPop(p, el); });
+    ents.push({poi:p, el, marker:new maplibregl.Marker({element:el, anchor:'center'}).setLngLat(pctToLL(p.pt)).addTo(map)});
+  });
+  applyFilters(); upProg();
+}
+function applyFilters() {
+  const q = ($('search').value || '').toLowerCase().trim();
+  ents.forEach(({poi, el}) => {
+    const ok = !S.allHidden && !S.hidden.has(poi.personal ? 'pessoal' : poi.cat) && (!S.pend || !prog[poi.id]) && (!q || (poi.name||'').toLowerCase().includes(q));
+    el.style.display = ok ? '' : 'none';
+  });
+}
+function upProg() {
+  const o = POI.filter(p => p.mapId === S.id), d = o.filter(p => prog[p.id]).length, pc = o.length ? Math.round(d/o.length*100) : 0;
+  $('progFill').style.width = pc + '%'; $('progCount').textContent = d + ' / ' + o.length; $('hndBadge').textContent = d + '/' + o.length; renderLists();
+}
+function count(k) { return k === 'pessoal' ? pers.filter(p => p.mapId === S.id).length : POI.filter(p => p.mapId === S.id && p.cat === k).length; }
+// UI: categorias em GRUPOS recolhíveis, com Mostrar/Ocultar por grupo e contagem por item.
+const openGrp = new Set(); let grpInit = false;
+function renderCats() {
+  const box = $('cats'); box.innerHTML = '';
+  const grupos = GRUPOS.concat([{ id:'pessoal', l:'Pins pessoais', c:PESS.c, itens:[['pessoal', 'Pins pessoais', '📌']] }]);
+  grupos.forEach(g => {
+    const ks = g.itens.map(i => i[0]), tot = ks.reduce((a, k) => a + count(k), 0);
+    if (!grpInit && tot > 0) openGrp.add(g.id);
+    const sec = document.createElement('section'); sec.className = 'grp' + (openGrp.has(g.id) ? ' open' : ''); sec.style.setProperty('--c', g.c);
+    sec.innerHTML = '<header class="gh"><button type="button" class="gt"><i class="car">▾</i><span></span><em></em></button><span class="ga"><button type="button" class="mini" data-a="show">Mostrar</button><button type="button" class="mini" data-a="hide">Ocultar</button></span></header><div class="gb"></div>';
+    sec.querySelector('.gt span').textContent = g.l; sec.querySelector('.gt em').textContent = tot;
+    sec.querySelector('.gt').onclick = () => { openGrp.has(g.id) ? openGrp.delete(g.id) : openGrp.add(g.id); sec.classList.toggle('open', openGrp.has(g.id)); };
+    sec.querySelectorAll('.ga button').forEach(b => b.onclick = () => { ks.forEach(k => b.dataset.a === 'show' ? S.hidden.delete(k) : S.hidden.add(k)); renderCats(); applyFilters(); });
+    const gb = sec.querySelector('.gb');
+    g.itens.forEach(([k, l]) => {
+      const i = catInfo(k), n = count(k), b = document.createElement('button');
+      b.type = 'button'; b.className = 'ci' + (S.hidden.has(k) ? ' off' : '') + (n ? '' : ' zero'); b.title = l + ' (' + n + ')';
+      b.style.setProperty('--c', i.c);
+      b.innerHTML = '<span class="ico">' + i.i + '</span><b></b><em>' + n + '</em>'; b.querySelector('b').textContent = l;
+      b.onclick = () => { S.hidden.has(k) ? S.hidden.delete(k) : S.hidden.add(k); b.classList.toggle('off', S.hidden.has(k)); applyFilters(); };
+      gb.appendChild(b);
+    });
+    box.appendChild(sec);
+  });
+  grpInit = true;
+}
+
+// ── Botões da lateral ──
+$('search').addEventListener('input', () => { clearTimeout(deb); deb = setTimeout(applyFilters, 150); });
+$('hideBtn').onclick = () => { S.allHidden = !S.allHidden; $('hideBtn').classList.toggle('on', S.allHidden); $('hideBtn').textContent = S.allHidden ? '👁 Mostrar Todos' : '👁 Ocultar Todos'; applyFilters(); };
+$('pendBtn').onclick = () => { S.pend = !S.pend; $('pendBtn').classList.toggle('on', S.pend); applyFilters(); };
+function notice(t) { $('notice').style.display = t ? 'block' : 'none'; $('notice').textContent = t || ''; }
+$('addBtn').onclick = () => {
+  S.add = !S.add; $('addBtn').classList.toggle('on', S.add);
+  if (S.add && S.calib) $('calBtn').click();
+  notice(S.add ? '📌 Toque/clique no mapa para posicionar o novo pin.' : '');
+};
+$('calBtn').onclick = () => {
+  S.calib = !S.calib; $('calBtn').classList.toggle('on', S.calib);
+  $('calBtn').textContent = S.calib ? '🎯 Calibrando... (toque no mapa)' : '🎯 Modo Calibração';
+  $('readout').style.display = 'none'; if (calMk) { calMk.remove(); calMk = null; }
+  if (S.calib && S.add) $('addBtn').click();
+  if (S.calib) notice('🎯 Toque no ponto do mapa para ler x/y em %.'); else if (!S.add) notice('');
+};
+$('hnd').onclick = () => { const o = $('side').classList.toggle('open'); $('hndTxt').textContent = (o ? '▼' : '▲') + ' FILTROS E FERRAMENTAS'; };
+
+// ── Clique no mapa: calibração / novo pin (Shift+clique no PC) ──
+function onMapClick(e) {
+  $('side').classList.remove('open'); $('hndTxt').textContent = '▲ FILTROS E FERRAMENTAS';
+  if (S.calib) {
+    const pt = llToPct(e.lngLat); if (calMk) calMk.remove();
+    const d = document.createElement('div'); d.style.cssText = 'width:12px;height:12px;border-radius:50%;background:#f8d060;border:2px solid #7a5c10;box-shadow:0 0 0 2px #0006';
+    calMk = new maplibregl.Marker({element:d, anchor:'center'}).setLngLat(e.lngLat).addTo(map);
+    $('rdTxt').textContent = '{ x: ' + pt.x + ', y: ' + pt.y + ' }'; $('readout').style.display = 'flex'; return;
+  }
+  if (S.add || (e.originalEvent && e.originalEvent.shiftKey)) openPinModal(llToPct(e.lngLat));
+}
+function copyText(t) {
+  if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(t).catch(() => {});
+  else { const a = document.createElement('textarea'); a.value = t; document.body.appendChild(a); a.select(); try { document.execCommand('copy'); } catch(e) {} a.remove(); }
+}
+$('rdCopy').onclick = () => copyText($('rdTxt').textContent);
+
+// ── Popup do pin (flutuante no desktop, folha inferior no celular) ──
+let curPoi = null;
+const isMob = () => matchMedia('(max-width:640px)').matches;
+function place(anchor) {
+  const c = $('popc'), ov = $('pop');
+  if (isMob() || !anchor) { ov.classList.remove('float'); c.style.cssText = ''; return; }
+  ov.classList.add('float');
+  const r = anchor.getBoundingClientRect(), m = 12, w = c.offsetWidth, h = c.offsetHeight;
+  let l = r.left + r.width/2 - w/2, t = r.top - h - m; if (t < m) t = r.bottom + m;
+  l = Math.max(m, Math.min(l, innerWidth-w-m)); t = Math.max(m, Math.min(t, innerHeight-h-m));
+  c.style.cssText = 'position:fixed;margin:0;left:' + l + 'px;top:' + t + 'px';
+}
+function openPop(p, anchor) {
+  curPoi = p; const ci = catInfo(p.cat); $('popc').style.setProperty('--c', colorOf(p)); // UI: faixa do popup na cor da categoria
+  $('pTitle').innerHTML = iconOf(p) + ' <span></span>'; $('pTitle').querySelector('span').textContent = p.name;
+  $('pCat').textContent = p.personal ? 'PIN PESSOAL' + (ci ? ' · ' + ci.l.toUpperCase() : '') : (ci ? ci.l.toUpperCase() : String(p.cat).toUpperCase());
+  $('pDesc').textContent = p.personal ? [p.location && '📍 ' + p.location, p.note].filter(Boolean).join(' — ') : (p.desc || '');
+  const img = $('pImg'), fb = $('pFb');
+  if (p.personal) $('pHolo').style.display = 'none';
+  else {
+    $('pHolo').style.display = 'block'; fb.style.display = 'none'; img.style.display = 'block';
+    const showFb = () => { img.style.display = 'none'; fb.style.display = 'block'; fb.innerHTML = iconOf(p); };
+    img.onerror = showFb; img.src = p.img || ''; if (!p.img) showFb();
+  }
+  $('pCheckWrap').style.display = p.personal ? 'none' : 'flex'; $('pCheck').checked = !!prog[p.id];
+  $('pCheck').onchange = () => { prog[p.id] = $('pCheck').checked; js_('progresso', prog); const e = ents.find(x => x.poi.id === p.id); if (e) e.el.innerHTML = pinHTML(p); upProg(); applyFilters(); };
+  $('pJump').style.display = (!p.personal && p.jump) ? 'block' : 'none'; $('pJump').onclick = () => { closePop(); jump(p); };
+  $('pEdit').style.display = $('pDel').style.display = p.personal ? 'block' : 'none';
+  $('pEdit').onclick = () => { closePop(); openEdit(p.id); };
+  $('pDel').onclick = () => { if (!confirm('Remover este pin pessoal?')) return; pers = pers.filter(x => x.id !== p.id); js_('pinsPessoais', pers); closePop(); renderPins(); renderCats(); };
+  $('pop').classList.add('on'); place(anchor);
+}
+function closePop() { $('pop').classList.remove('on'); }
+$('pClose').onclick = closePop;
+$('pop').addEventListener('click', e => { if (e.target === $('pop')) closePop(); });
+
+// "Saiba mais": jump:{anchor:'id'} rola até o elemento; jump:{url:'...'} navega; jump:{fn:(poi)=>{...}} roda sua função.
+function jump(p) {
+  const j = p.jump; if (!j) return; if (S.fs) setFs(false);
+  if (j.anchor) { const e = $(j.anchor); if (e) { e.scrollIntoView({behavior:'smooth', block:'center'}); e.classList.remove('flash'); void e.offsetWidth; e.classList.add('flash'); } }
+  else if (j.url) { const alvo = (window.parent && window.parent !== window) ? window.parent : window; if (j.url[0] === '#') alvo.location.hash = j.url; else alvo.location.href = j.url; } // dentro do quadro, '#jogo/gta-vi/trofeus' muda a aba do site else if (typeof j.fn === 'function') j.fn(p);
+}
+
+// ── Pins pessoais: criar / editar / exportar ──
+(function() {
+  $('pmCat').innerHTML = GRUPOS.map(g => '<optgroup label="' + g.l + '">' + g.itens.map(i => '<option value="' + i[0] + '">' + i[1] + '</option>').join('') + '</optgroup>').join('') + '<option value="pessoal">📌 Pin Genérico</option>';
+})();
+function pinModalMode(edit) { $('pmTitle').textContent = edit ? '✏️ EDITAR PIN PESSOAL' : '📌 NOVO PIN PESSOAL'; $('pmSave').textContent = edit ? 'Salvar Alterações' : 'Salvar Pin'; if (!edit) S.editId = null; }
+function openPinModal(pt) {
+  S.tmp = pt; pinModalMode(false); $('pmName').value = ''; $('pmCat').value = 'pessoal'; $('pmLoc').value = ''; $('pmDesc').value = '';
+  $('pinModal').classList.add('on');
+}
+function openEdit(id) {
+  const p = pers.find(x => x.id === id); if (!p) return;
+  S.tmp = null; pinModalMode(true); S.editId = id;
+  $('pmCat').value = [...$('pmCat').options].some(o => o.value === (p.cat||'pessoal')) ? (p.cat||'pessoal') : 'pessoal';
+  $('pmName').value = p.name || ''; $('pmLoc').value = p.location || ''; $('pmDesc').value = p.note || '';
+  $('pinModal').classList.add('on');
+}
+function closePinModal() { $('pinModal').classList.remove('on'); S.tmp = null; pinModalMode(false); }
+$('pmCancel').onclick = closePinModal;
+$('pinModal').addEventListener('click', e => { if (e.target === $('pinModal')) closePinModal(); });
+$('pmSave').onclick = () => {
+  const name = $('pmName').value.trim(); if (!name) { alert('Digite um título pro pin.'); return; }
+  const f = { name, cat:$('pmCat').value, location:$('pmLoc').value.trim(), note:$('pmDesc').value.trim() };
+  if (S.editId) { const p = pers.find(x => x.id === S.editId); if (p) { Object.assign(p, f); js_('pinsPessoais', pers); } }
+  else { if (!S.tmp) return; pers.push(Object.assign({id:'pessoal-' + Date.now(), mapId:S.id, x:parseFloat(S.tmp.x), y:parseFloat(S.tmp.y)}, f)); js_('pinsPessoais', pers); }
+  closePinModal(); renderPins(); renderCats();
+};
+$('expBtn').onclick = () => { $('expTa').value = JSON.stringify(pers, null, 2); $('expModal').classList.add('on'); };
+$('expClose').onclick = () => $('expModal').classList.remove('on');
+$('expModal').addEventListener('click', e => { if (e.target === $('expModal')) $('expModal').classList.remove('on'); });
+$('expCopy').onclick = () => copyText($('expTa').value);
+
+// ── Zoom e tela cheia ──
+$('zIn').onclick = () => map && map.zoomIn({duration:200});
+$('zOut').onclick = () => map && map.zoomOut({duration:200});
+$('zRst').onclick = () => map && map.fitBounds([[B.west,B.south],[B.east,B.north]], {padding:fitPad(), animate:false});
+function setFs(on) {
+  S.fs = on; $('frame').classList.toggle('fs', on); $('fsBtn').textContent = on ? '✕ Sair da Tela Cheia' : '⛶ Tela Cheia';
+  if (on) { fsY = scrollY || 0; document.body.style.top = -fsY + 'px'; document.body.classList.add('lock'); }
+  else { document.body.classList.remove('lock'); document.body.style.top = ''; scrollTo(0, fsY); $('side').classList.remove('open'); $('hndTxt').textContent = '▲ FILTROS E FERRAMENTAS'; $('msel').classList.remove('open'); }
+  requestAnimationFrame(() => requestAnimationFrame(() => { if (map) { map.resize(); fit(); } }));
+}
+$('fsBtn').onclick = () => setFs(!S.fs);
+document.addEventListener('keydown', e => {
+  if (e.key !== 'Escape') return;
+  if (S.fs) setFs(false);
+  ['pinModal','expModal','pop'].forEach(i => $(i).classList.remove('on'));
+});
+
+// ── UI: painel (abas, listas, minimizar) ──
+function irPara(p) {
+  if (matchMedia('(max-width:640px)').matches) { $('side').classList.remove('open'); $('hndTxt').textContent = '▲ FILTROS E FERRAMENTAS'; }
+  const e = ents.find(x => x.poi.id === p.id); if (!e || !map) return;
+  const k = p.personal ? 'pessoal' : p.cat;
+  if (S.allHidden) $('hideBtn').click();
+  if (S.hidden.has(k)) { S.hidden.delete(k); renderCats(); applyFilters(); }
+  map.flyTo({ center:pctToLL(p.pt), zoom:Math.min(z0 + 3, map.getMaxZoom()), duration:600 });
+  map.once('moveend', () => openPop(p, e.el));
+}
+function linhaPin(p, comCheck) {
+  const r = document.createElement('div'); r.className = 'ck'; r.style.setProperty('--c', colorOf(p));
+  const ico = '<span class="ico">' + iconOf(p) + '</span>';
+  if (comCheck) {
+    const c = document.createElement('input'); c.type = 'checkbox'; c.checked = !!prog[p.id]; c.setAttribute('aria-label', 'Já encontrei');
+    c.onchange = () => { prog[p.id] = c.checked; js_('progresso', prog); const e = ents.find(x => x.poi.id === p.id); if (e) e.el.innerHTML = pinHTML(p); upProg(); applyFilters(); };
+    r.appendChild(c);
+  }
+  const g = document.createElement('button'); g.type = 'button'; g.className = 'go'; g.innerHTML = ico + '<span></span>';
+  g.querySelector('span:last-child').textContent = p.name + (p.personal && p.location ? ' — ' + p.location : '');
+  g.onclick = () => irPara(p); r.appendChild(g); return r;
+}
+function renderLists() {
+  if (!$('checkList')) return;
+  const o = POI.filter(p => p.mapId === S.id), d = o.filter(p => prog[p.id]).length;
+  $('pTituloMapa').textContent = S.cur ? S.cur.name : '';
+  $('stDone').innerHTML = '<b>' + d + '</b> Completos'; $('pendBtn').innerHTML = '<b>' + (o.length - d) + '</b> Pendentes';
+  const cl = $('checkList'); cl.innerHTML = '';
+  GRUPOS.forEach(g => g.itens.forEach(([k, l]) => {
+    const ps = o.filter(p => p.cat === k); if (!ps.length) return;
+    const h = document.createElement('p'); h.className = 'cl-h'; h.textContent = l + ' · ' + ps.filter(p => prog[p.id]).length + '/' + ps.length; cl.appendChild(h);
+    ps.forEach(p => cl.appendChild(linhaPin(p, true)));
+  }));
+  if (!o.length) cl.innerHTML = '<p class="vazio">Nenhum pin oficial neste mapa ainda.</p>';
+  const ml = $('meusList'); ml.innerHTML = '';
+  const meus = pers.filter(p => p.mapId === S.id).map(p => ({ id:p.id, cat:p.cat || 'pessoal', mapId:p.mapId, pt:{x:p.x, y:p.y}, name:p.name, note:p.note, location:p.location, personal:true }));
+  meus.forEach(p => ml.appendChild(linhaPin(p, false)));
+  if (!meus.length) ml.innerHTML = '<p class="vazio">Nenhum pin pessoal neste mapa ainda.</p>';
+}
+document.querySelectorAll('.ptabs button').forEach(b => b.onclick = () => {
+  document.querySelectorAll('.ptabs button').forEach(x => x.classList.toggle('on', x === b));
+  document.querySelectorAll('.tab').forEach(t => t.classList.toggle('on', t.id === 'tab-' + b.dataset.tab));
+});
+$('panelMin').onclick = () => { const m = $('side').classList.toggle('min'); $('panelMin').textContent = m ? '▢' : '–'; $('panelMin').title = m ? 'Abrir painel' : 'Minimizar painel'; };
+$('btnShowAll').onclick = () => { S.hidden.clear(); if (S.allHidden) $('hideBtn').click(); renderCats(); applyFilters(); };
+
+// ── Inicialização: só cria o mapa quando o container tem tamanho (serve também se a aba/painel começar oculto) ──
+function init() {
+  if (map) return;
+  if (!window.maplibregl) { $('fb').style.display = 'flex'; $('fbTxt').textContent = 'MapLibre não carregou (verifique a conexão).'; return; }
+  map = new maplibregl.Map({ container:'map', style:{version:8, sources:{}, layers:[{id:'bg', type:'background', paint:{'background-color':'hsl(330, 22%, 7%)'}}]},
+    center:[0,0], zoom:0, attributionControl:false, dragRotate:false, pitchWithRotate:false, touchPitch:false });
+  map.touchZoomRotate.disableRotation();
+  map.on('zoomend', zl); map.on('click', onMapClick); map.on('load', () => loadMap(S.id));
+}
+new ResizeObserver(() => { if (!map) { if ($('mapWrap').clientWidth > 0) init(); } else map.resize(); }).observe($('mapWrap'));
+renderMapList(); renderCats(); upProg();
+window.MapaBase = { maps:MAPS, pois:POI, loadMap, fit, setFs, get map() { return map; } };
+</script>
+</body>
+</html>
