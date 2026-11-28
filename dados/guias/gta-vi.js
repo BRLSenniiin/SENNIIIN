@@ -645,6 +645,7 @@ JOGOS['gta-vi'] = {
         ]
       }
     ],
+    mapaInterativo: 'mapa-gta-vi.html',   // a aba Mapas mostra o mapa interativo desta página (a lista 'mapas' abaixo só aparece se você apagar esta linha)
     mapas: [   // EXEMPLO (formato { t, d, href }): troque pelo mapa real
       { t: { pt: 'Exemplo: nome do mapa', en: 'Example: map name' }, d: { pt: 'Descrição curta do mapa.', en: 'Short map description.' }, href: '#jogo/gta-vi/mapas' }
     ],
